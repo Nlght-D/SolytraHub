@@ -2,11 +2,12 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deivi
 local Window = Library:CreateWindow({
     Title = "KS:PR",
     Footer = "Made by: #?%#(*",
-    ToggleKeybind = Enum.KeyCode.RightControl,
+    ToggleKeybind = Enum.KeyCode.M,
     Center = true,
     AutoShow = true
 }) 
 
 local MainTab = Window:AddTab("Main", "home")
-local LeftGroupbox = MainTab:AddLeftGroupbox("Settings")
-local RightGroupbox = MainTab:AddRightGroupbox("Information")
+local GloveGroupBox = MainTab:AddLeftGroupbox("Glove")
+local Tab1 = GloveGroupBox:AddTab("General")
+local Tab2 = GloveGroupBox:AddTab("Advanced")
