@@ -9,7 +9,7 @@ local Window = Library:CreateWindow({
 
 local MainTab = Window:AddTab("Main", "home")
 
-local GloveGroupBox = MainTab:AddLeftGroupbox("Glove")
-local Tabbox = MainTab:AddLeftTabbox("Settings")
+local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
+local Tabbox = MainTab:AddLeftTabbox("Glove Stuffs")
 local Tab1 = Tabbox:AddTab("General")
 local Tab2 = Tabbox:AddTab("Advanced")
