@@ -1,5 +1,5 @@
 local Places = {
-    [102719677723924] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/KSPE.lua"
+    [102719677723924] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/KSPR.lua"
 }
 
 local PlaceId = game.PlaceId
