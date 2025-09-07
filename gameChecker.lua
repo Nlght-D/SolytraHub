@@ -3,12 +3,18 @@ local Places = {
 }
 
 local PlaceId = game.PlaceId
+
 if Places[PlaceId] then
     if loadstring then
-        pcall(function()
-            loadstring(game:HttpGet(Places[PlaceId]))()
-        end)  if not success then
+        local success, err = pcall(function()
+            loadstring(game:HttpGet(Places[PlaceId]))
+        end)
+        if not success then
+            warn("Erro ao executar o script:", err)
+        else
+            print("Loaded")
+        end
     else
-        warn("Cant Use Loadstring in this game")
+        warn("loadstring não está disponível neste ambiente")
     end
 end

@@ -5,4 +5,5 @@ local Window = Library:CreateWindow({
     ToggleKeybind = Enum.KeyCode.RightControl,
     Center = true,
     AutoShow = true
-}) local MainTab = Window:AddTab("Main", "home")
+}) 
+local MainTab = Window:AddTab("Main", "home")
