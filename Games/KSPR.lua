@@ -10,6 +10,12 @@ local Window = Library:CreateWindow({
 local MainTab = Window:AddTab("Main", "home")
 
 local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
-local Tabbox = MainTab:AddLeftTabbox("Glove Stuffs")
-local Tab1 = Tabbox:AddTab("General")
-local Tab2 = Tabbox:AddTab("Advanced")
+local DescriptionGlove = GloveGroupBox:AddLabel("This is a label")
+local WrappedLabel = GloveGroupBox:AddLabel({
+    Text = "This is a wrapped label that will break into multiple lines",
+    DoesWrap = true
+})
+
+local TabGlove = MainTab:AddLeftTabbox("Glove Stuffs")
+local SlapGlove = GloveTab:AddTab("Slap")
+local GenralGlove = GloveTab:AddTab("General")
