@@ -10,12 +10,9 @@ local Window = Library:CreateWindow({
 local MainTab = Window:AddTab("Main", "home")
 
 local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
-
 local TabGlove = MainTab:AddLeftTabbox("Glove Stuffs")
-local SlapGlove = GloveTab:AddTab("Slap")
-local GenralGlove = GloveTab:AddTab("General")
 
-local Button = SlapGlove:AddButton({
+local Button = TabGlove:AddButton({
     Text = "Click Me",
     Func = function()
         print("Button clicked!")
