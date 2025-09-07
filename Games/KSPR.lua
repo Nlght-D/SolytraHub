@@ -10,5 +10,6 @@ local Window = Library:CreateWindow({
 local MainTab = Window:AddTab("Main", "home")
 
 local GloveGroupBox = MainTab:AddLeftGroupbox("Glove")
-local Tab1 = GloveGroupBox:AddTab("General")
-local Tab2 = GloveGroupBox:AddTab("Advanced")
+local Tabbox = MainTab:AddLeftTabbox("Settings")
+local Tab1 = Tabbox:AddTab("General")
+local Tab2 = Tabbox:AddTab("Advanced")
