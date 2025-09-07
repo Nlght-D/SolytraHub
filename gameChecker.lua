@@ -1,7 +1,7 @@
 local Places = {
     102719677723924 = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/KSPE.lua"
 }
-
+print("loaded")
 local PlaceId = game.PlaceId
 
 if Places[PlaceId] then
