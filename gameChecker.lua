@@ -15,14 +15,5 @@ if Places[PlaceId] then
                 warn("Erro ao compilar o script.")
             end
         end)
-        if not success then
-            warn("Erro ao executar o script:", err)
-        else
-            print("Script carregado e executado com sucesso.")
-        end
-    else
-        warn("loadstring não está disponível neste ambiente.")
     end
-else
-    warn("ID do lugar não encontrado na tabela.")
 end
