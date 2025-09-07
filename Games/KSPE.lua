@@ -6,4 +6,7 @@ local Window = Library:CreateWindow({
     Center = true,
     AutoShow = true
 }) 
+
 local MainTab = Window:AddTab("Main", "home")
+local LeftGroupbox = MainTab:AddLeftGroupbox("Settings")
+local RightGroupbox = MainTab:AddRightGroupbox("Information")
