@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
 local Window = Library:CreateWindow({
-    Title = "KS:PR,
+    Title = "KS:PR",
     Footer = "Made by: #?%#(*",
     ToggleKeybind = Enum.KeyCode.RightControl,
     Center = true,
