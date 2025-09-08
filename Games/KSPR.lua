@@ -1,4 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
+ local SlapAuraModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/KSPR/SlapAura.lua"))()
 local Window = Library:CreateWindow({
     Title = "KS:PR",
     Footer = "Made by: #?%#(*",
@@ -14,7 +15,6 @@ local SlapAuraActiverToogle = SlapGeneralGroupBox:AddToggle("SlapAuraToggle", {
     Text = "Slap Aura",
     Risky = true,
     Callback = function(Value)
-        local SlapAuraModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/KSPR/SlapAura.lua"))()
         SlapAuraModule.Setup(Value)
     end
 }) 
