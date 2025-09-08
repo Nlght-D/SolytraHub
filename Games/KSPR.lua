@@ -8,14 +8,17 @@ local Window = Library:CreateWindow({
 }) 
 
 local MainTab = Window:AddTab("Main", "home")
-local SlapAuraGroupBox = MainTab:AddLeftGroupbox("Slap Aura")
-local SlapAuraActiverToogle = SlapAuraGroupBox:AddToggle("SlapAuraToggle", {
-    Text = "Slap Aura [BETA]",
+local SlapGeneralGroupBox = MainTab:AddLeftGroupbox("Slap General")
+
+local SlapAuraActiverToogle = SlapGeneralGroupBox:AddToggle("SlapAuraToggle", {
+    Text = "Slap Aura",
     Risky = true,
     Callback = function(Value)
         
     end
-}) local SlapAuraAreaSlider = SlapAuraGroupBox:AddSlider("SlapAuraArea", {
+}) 
+
+local SlapAuraAreaSlider = SlapGeneralGroupBox:AddSlider("SlapAuraArea", {
     Text = "Aura Area",
     Default = 5,
     Min = 0,
@@ -23,6 +26,7 @@ local SlapAuraActiverToogle = SlapAuraGroupBox:AddToggle("SlapAuraToggle", {
     Rounding = 1,
     Compact = false,
     Callback = function(Value)
-        print("Slider changed to:", Value)
+        _G.SlapAuraArea = Value
+        print(_G.SlapAuraArea)
     end
 })
