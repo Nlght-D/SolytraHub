@@ -2,6 +2,7 @@ local SlapAura = {}
 local SlapEvent = game:GetService("Players").LocalPlayer.Character:FindFirstAncestorOfClass("Tool"):WaitForChild("Server"):WaitForChild("Slap"):FireServer(unpack(args))
 
 function SlapAura.Setup(Boolean)
+    print("Hello")
 	if Boolean then
 		local Hitbox = Instance.new("Part")
 		Hitbox.Size = _G.SlapAuraArea
