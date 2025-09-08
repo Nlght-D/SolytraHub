@@ -4,15 +4,19 @@ function SlapAura.Setup(b)
     print("Loaded")
     local plr = game:GetService("Players").LocalPlayer
     local char = plr.Character or plr.CharacterAdded:Wait()
-    
+
+    -- tenta achar Soul Devourer no char ou backpack
     local tool = char:FindFirstChild("Soul Devourer") or plr.Backpack:FindFirstChild("Soul Devourer")
+    -- se não achou, espera até equipar
     if not tool then
-        tool = plr.Backpack.ChildAdded:Wait() -- espera equipar/pegar
-        if tool.Name ~= "Soul Devourer" then
+        print("Aguardando Soul Devourer...")
+        tool = plr.Backpack.ChildAdded:Wait()
+        while tool.Name ~= "Soul Devourer" do
             tool = char.ChildAdded:Wait()
         end
     end
 
+    -- agora tool nunca deve ser nil
     local SlapEvent = tool:WaitForChild("Server"):WaitForChild("Slap")
 
     if b then
