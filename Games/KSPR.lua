@@ -19,12 +19,10 @@ local MyToggle = GloveGroupBox:AddToggle("MyToggle", {
     end
 })
 
--- You can use :OnChanged to add another callback
 MyToggle:OnChanged(function(Value)
     print("Toggle changed via OnChanged:", Value)
-})
+)
 
--- You can also create checkboxes instead of switch-style toggles
 local MyCheckbox = GloveGroupBox:AddCheckbox("MyCheckbox", {
     Text = "Example Checkbox",
     Default = false,
