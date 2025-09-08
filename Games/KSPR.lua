@@ -14,10 +14,12 @@ local SlapAuraActiverToogle = SlapGeneralGroupBox:AddToggle("SlapAuraToggle", {
     Text = "Slap Aura",
     Risky = true,
     Callback = function(Value)
-        
+        local SlapAuraModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/KSPR/SlapAura.lua"))()
+        SlapAuraModule.Setup(Value)
     end
 }) 
 
+_G.SlapAuraArea = 5
 local SlapAuraAreaSlider = SlapGeneralGroupBox:AddSlider("SlapAuraArea", {
     Text = "Aura Area",
     Default = 5,
@@ -27,6 +29,5 @@ local SlapAuraAreaSlider = SlapGeneralGroupBox:AddSlider("SlapAuraArea", {
     Compact = false,
     Callback = function(Value)
         _G.SlapAuraArea = Value
-        print(_G.SlapAuraArea)
     end
 })
