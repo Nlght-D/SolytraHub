@@ -19,10 +19,6 @@ local MyToggle = GloveGroupBox:AddToggle("MyToggle", {
     end
 })
 
-MyToggle:OnChanged(function(Value)
-    print("Toggle changed via OnChanged:", Value)
-)
-
 local MyCheckbox = GloveGroupBox:AddCheckbox("MyCheckbox", {
     Text = "Example Checkbox",
     Default = false,
