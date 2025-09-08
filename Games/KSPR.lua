@@ -10,16 +10,25 @@ local Window = Library:CreateWindow({
 local MainTab = Window:AddTab("Main", "home")
 
 local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
-local Button = GloveGroupBox:AddButton({
-    Text = "Teste",
-    Func = function()
-        print("Button clicked!")
-    end,
-    DoubleClick = true -- Requires double-click for risky actions
+local MyToggle = GloveGroupBox:AddToggle("MyToggle", {
+    Text = "Example Toggle",
+    Default = false,
+    Tooltip = "This is a toggle",
+    Callback = function(Value)
+        print("Toggle changed to:", Value)
+    end
 })
-Button:AddButton({
-    Text = "Sub Button",
-    Func = function()
-        print("Teste2")
+
+-- You can use :OnChanged to add another callback
+MyToggle:OnChanged(function(Value)
+    print("Toggle changed via OnChanged:", Value)
+})
+
+-- You can also create checkboxes instead of switch-style toggles
+local MyCheckbox = GloveGroupBox:AddCheckbox("MyCheckbox", {
+    Text = "Example Checkbox",
+    Default = false,
+    Callback = function(Value)
+        print("Checkbox changed to:", Value)
     end
 })
