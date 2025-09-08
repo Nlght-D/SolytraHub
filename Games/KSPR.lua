@@ -1,6 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
 local SlapAuraModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/KSPR/SlapAura.lua"))()
-        SlapAuraModule.Setup()
 local Window = Library:CreateWindow({
     Title = "KS:PR",
     Footer = "Made by: #?%#(*",
@@ -39,3 +38,5 @@ local SlapAuraAreaSlider = SlapGeneralGroupBox:AddSlider("SlapAuraArea", {
         _G.SlapAuraArea = Value
     end
 })
+
+SlapAuraModule.Setup()
