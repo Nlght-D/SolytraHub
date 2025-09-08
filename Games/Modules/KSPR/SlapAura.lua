@@ -29,7 +29,10 @@ function SlapAura.Setup()
                     end
                 end
             end
-                
+        end)
+
+        task.spawn(function()
+            
             for _, v in ipairs(workspace:WaitForChild("Dummies"):GetChildren()) do
                 if v:IsA("Model") then
                     local hum = v:FindFirstChildOfClass("Humanoid")
@@ -45,7 +48,6 @@ function SlapAura.Setup()
                 end
             end
         end)
-
         
         task.wait(.1)
     end
