@@ -25,6 +25,10 @@ local Keybind = SlapAuraActiverToogle:AddKeyPicker("MyKeybind", {
     Text = "Example Keybind",
     Mode = "Toggle",
     SyncToggleState = false,
+    Callback = function(Value)
+        _G.SlapAuraActivated = Value
+        SlapAuraModule.Setup()
+    end
 })
 
 _G.SlapAuraArea = 5
