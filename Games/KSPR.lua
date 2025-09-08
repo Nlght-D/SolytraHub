@@ -10,20 +10,7 @@ local Window = Library:CreateWindow({
 local MainTab = Window:AddTab("Main", "home")
 
 local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
-local TabGlove = GloveGroupBox:AddLeftTabbox("Glove Stuffs")
 
-local Button = TabGlove:AddButton({
-    Text = "Click Me",
-    Func = function()
-        print("Button clicked!")
-    end,
-    DoubleClick = true -- Requires double-click for risky actions
-})
-
--- You can also add sub-buttons
-Button:AddButton({
-    Text = "Sub Button",
-    Func = function()
-        print("Sub-button clicked!")
-    end
-})
+local Tabbox = MainTab:AddLeftTabbox("Settings")
+local Tab1 = Tabbox:AddTab("General")
+local Tab2 = Tabbox:AddTab("Advanced")
