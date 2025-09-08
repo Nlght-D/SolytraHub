@@ -10,7 +10,7 @@ local Window = Library:CreateWindow({
 local MainTab = Window:AddTab("Main", "home")
 
 local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
-local TabGlove = MainTab:AddLeftTabbox("Glove Stuffs")
+local TabGlove = GloveGroupBox:AddLeftTabbox("Glove Stuffs")
 
 local Button = TabGlove:AddButton({
     Text = "Click Me",
