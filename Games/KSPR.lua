@@ -16,6 +16,7 @@ local SlapAuraActiverToogle = SlapGeneralGroupBox:AddToggle("SlapAuraToggle", {
     Risky = true,
     Callback = function(Value)
         _G.SlapAuraActivated = Value
+        SlapAuraModule.Setup()
     end
 }) 
 
@@ -39,4 +40,3 @@ local SlapAuraAreaSlider = SlapGeneralGroupBox:AddSlider("SlapAuraArea", {
     end
 })
 
-SlapAuraModule.Setup()
