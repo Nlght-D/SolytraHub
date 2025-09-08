@@ -11,7 +11,7 @@ function SlapAura.Setup(Boolean)
 		
 		local WeldContraist = Instance.new("WeldConstraint")
 		WeldContraist.Part0 = Hitbox
-		WeldContraist.Part1 = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+		WeldContraist.Part1 = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("BasePart")
 		WeldContraist.Parent = Hitbox
 		
 		Hitbox.Touched:Connect(function(Hit)
