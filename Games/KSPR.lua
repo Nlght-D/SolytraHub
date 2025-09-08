@@ -19,6 +19,13 @@ local SlapAuraActiverToogle = SlapGeneralGroupBox:AddToggle("SlapAuraToggle", {
     end
 }) 
 
+local Keybind = SlapAuraActiverToogle:AddKeyPicker("MyKeybind", {
+    Default = "F",
+    Text = "Example Keybind",
+    Mode = "Toggle",
+    SyncToggleState = false,
+})
+
 _G.SlapAuraArea = 5
 local SlapAuraAreaSlider = SlapGeneralGroupBox:AddSlider("SlapAuraArea", {
     Text = "Aura Area",
