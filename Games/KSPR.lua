@@ -11,7 +11,7 @@ local MainTab = Window:AddTab("Main", "home")
 
 local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
 local Button = GloveGroupBox:AddButton({
-    Text = "Click Me",
+    Text = "Teste",
     Func = function()
         print("Button clicked!")
     end,
@@ -20,6 +20,6 @@ local Button = GloveGroupBox:AddButton({
 Button:AddButton({
     Text = "Sub Button",
     Func = function()
-        print("Sub-button clicked!")
+        print("Teste2")
     end
 })
