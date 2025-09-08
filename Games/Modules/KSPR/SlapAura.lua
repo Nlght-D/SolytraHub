@@ -4,7 +4,7 @@ function SlapAura.Setup(b)
     print("Loaded")
     local plr = game:GetService("Players").LocalPlayer
     local char = plr.Character or plr.CharacterAdded:Wait()
-    local tool = char:WaitForChild("Tool") -- substitui "Tool" pelo nome certo da ferramenta
+    local tool = char:FindFirstAncestorOfClass("Tool") -- substitui "Tool" pelo nome certo da ferramenta
     local SlapEvent = tool:WaitForChild("Server"):WaitForChild("Slap")
 
     if b then
