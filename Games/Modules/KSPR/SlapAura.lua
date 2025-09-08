@@ -19,6 +19,7 @@ function SlapAura.Setup()
                         or char:FindFirstChild("Torso") 
                         or char:FindFirstChild("UpperTorso")
         if charHRP then
+            -- Players
             for _, v in ipairs(game:GetService("Players"):GetPlayers()) do
                 if v ~= plr and v.Character then
                     local hum = v.Character:FindFirstChildOfClass("Humanoid")
@@ -33,15 +34,19 @@ function SlapAura.Setup()
                 end
             end
 
-            for _, v in ipairs(workspace:WaitForChild("Dummies"):GetChildren()) do
-                if v:IsA("Model") then
-                    local hum = v:FindFirstChildOfClass("Humanoid")
-                    local hrp = v:FindFirstChild("HumanoidRootPart")
-                            or v:FindFirstChild("Torso")
-                            or v:FindFirstChild("UpperTorso")
-                    if hum and hrp and hum.Health > 0 then
-                        if (hrp.Position - charHRP.Position).Magnitude <= range then
-                            SlapEvent:FireServer(v)
+            -- Dummies
+            local dummiesFolder = workspace:FindFirstChild("Dummies")
+            if dummiesFolder then
+                for _, v in ipairs(dummiesFolder:GetChildren()) do
+                    if v:IsA("Model") then
+                        local hum = v:FindFirstChildOfClass("Humanoid")
+                        local hrp = v:FindFirstChild("HumanoidRootPart")
+                                or v:FindFirstChild("Torso")
+                                or v:FindFirstChild("UpperTorso")
+                        if hum and hrp and hum.Health > 0 then
+                            if (hrp.Position - charHRP.Position).Magnitude <= range then
+                                SlapEvent:FireServer(v)
+                            end
                         end
                     end
                 end
@@ -49,30 +54,6 @@ function SlapAura.Setup()
         end
 
         task.wait(0.1)
-    end
-end
-
-
-function SlapAura.Setup(b)
-    print("Loaded")
-    local plr = game:GetService("Players").LocalPlayer
-    local char = plr.Character or plr.CharacterAdded:Wait()
-    local tool = char:FindFirstChild("Soul Devourer") or plr.Backpack:FindFirstChild("Soul Devourer")
-
-    if not tool then
-        tool = plr.Backpack.ChildAdded:Wait()
-        while tool.Name ~= "Soul Devourer" do
-            tool = char.ChildAdded:Wait()
-        end
-    end
-
-    local SlapEvent = tool:WaitForChild("Server"):WaitForChild("Slap")
-
-    if b then
-        print("Iniciando Slap Aura")
-
-       
-        return
     end
 end
 
