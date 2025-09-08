@@ -1,7 +1,12 @@
 local SlapAura = {}
 local plr = game:GetService("Players").LocalPlayer
+local Used = false
 
 function SlapAura.Setup()
+    if Used then
+        return
+    end
+
     while _G.SlapAuraActivated do
         local char = plr.Character or plr.CharacterAdded:Wait()
         local tool = char:FindFirstChild("Soul Devourer") or plr.Backpack:FindFirstChild("Soul Devourer")
