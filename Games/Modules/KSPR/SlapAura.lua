@@ -22,7 +22,7 @@ function SlapAura.Setup(b)
     if b then
         local Hitbox = Instance.new("Part")
         Hitbox.Name = "Hitbox"
-        Hitbox.Size = _G.SlapAuraArea or Vector3.new(5,5,5)
+        Hitbox.Size = Vector3.new(_G.SlapAuraArea, _G.SlapAuraArea, _G.SlapAuraArea) or Vector3.new(5,5,5)
         Hitbox.CanCollide = false
         Hitbox.Transparency = 1
         Hitbox.Parent = char
