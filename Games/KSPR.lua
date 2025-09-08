@@ -8,21 +8,21 @@ local Window = Library:CreateWindow({
 }) 
 
 local MainTab = Window:AddTab("Main", "home")
-
-local GloveGroupBox = MainTab:AddLeftGroupbox("Glove Stuffs")
-local MyToggle = GloveGroupBox:AddToggle("MyToggle", {
-    Text = "Example Toggle",
-    Default = false,
-    Tooltip = "This is a toggle",
+local SlapAuraGroupBox = MainTab:AddLeftGroupbox("Slap Aura")
+local SlapAuraActiverToogle = SlapAuraGroupBox:AddToggle("SlapAuraToggle", {
+    Text = "Slap Aura [BETA]",
+    Risky = true,
     Callback = function(Value)
-        print("Toggle changed to:", Value)
+        
     end
-})
-
-local MyCheckbox = GloveGroupBox:AddCheckbox("MyCheckbox", {
-    Text = "Example Checkbox",
-    Default = false,
+}) local SlapAuraAreaSlider = SlapAuraGroupBox:AddSlider("SlapAuraArea", {
+    Text = "Aura Area",
+    Default = 5,
+    Min = 0,
+    Max = 15,
+    Rounding = 1,
+    Compact = false,
     Callback = function(Value)
-        print("Checkbox changed to:", Value)
+        print("Slider changed to:", Value)
     end
 })
