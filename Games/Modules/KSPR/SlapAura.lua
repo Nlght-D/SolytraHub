@@ -18,15 +18,21 @@ function SlapAura.Setup(b)
     if b then
         print("Iniciando Slap Aura")
 
-        -- loop de detecção em vez de hitbox física
+        local range = tonumber(_G.SlapAuraArea) or 10
+
         task.spawn(function()
-            while task.wait(0.15) and b do
-                for _, v in ipairs(workspace:GetChildren()) do
-                    local hum = v:FindFirstChildOfClass("Humanoid")
-                    local hrp = v:FindFirstChild("HumanoidRootPart")
-                    if hum and hrp and v ~= char then
-                        if (hrp.Position - char.HumanoidRootPart.Position).Magnitude <= (_G.SlapAuraArea or 10) then
-                            SlapEvent:FireServer(v)
+            while task.wait(0.05) and b do
+                for _, v in ipairs(game:GetService("Players"):GetPlayers()) do
+                    if v ~= plr and v.Character then
+                        local hum = v.Character:FindFirstChildOfClass("Humanoid")
+                        local hrp = v.Character:FindFirstChild("HumanoidRootPart")
+                            or v.Character:FindFirstChild("Torso")
+                            or v.Character:FindFirstChild("UpperTorso")
+
+                        if hum and hrp and hum.Health > 0 then
+                            if (hrp.Position - char.HumanoidRootPart.Position).Magnitude <= range then
+                                SlapEvent:FireServer(v.Character)
+                            end
                         end
                     end
                 end
