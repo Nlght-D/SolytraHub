@@ -38,15 +38,15 @@ function SlapAura.Setup(b)
                 end
                 
                 for _, v in ipairs(workspace:WaitForChild("Dummies"):GetChildren()) do
-                    if v ~= plr and v.Character then
-                        local hum = v.Character:FindFirstChildOfClass("Humanoid")
-                        local hrp = v.Character:FindFirstChild("HumanoidRootPart")
-                            or v.Character:FindFirstChild("Torso")
-                            or v.Character:FindFirstChild("UpperTorso")
+                    if v:IsA("Model") then
+                        local hum = v:FindFirstChildOfClass("Humanoid")
+                        local hrp = v:FindFirstChild("HumanoidRootPart")
+                                    or v:FindFirstChild("Torso")
+                                    or v:FindFirstChild("UpperTorso")
 
                         if hum and hrp and hum.Health > 0 then
                             if (hrp.Position - char.HumanoidRootPart.Position).Magnitude <= range then
-                                SlapEvent:FireServer(v.Character)
+                                SlapEvent:FireServer(v)
                             end
                         end
                     end
