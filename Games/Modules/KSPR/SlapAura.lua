@@ -6,6 +6,7 @@ function SlapAura.Setup()
     if Used then
         return
     end
+    Used = true
 
     while _G.SlapAuraActivated do
         local char = plr.Character or plr.CharacterAdded:Wait()
