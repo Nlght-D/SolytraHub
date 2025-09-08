@@ -20,6 +20,7 @@ function SlapAura.Setup(b)
     local SlapEvent = tool:WaitForChild("Server"):WaitForChild("Slap")
 
     if b then
+        print("Criando hitbox")
         local Hitbox = Instance.new("Part")
         Hitbox.Name = "Hitbox"
         Hitbox.Size = Vector3.new(_G.SlapAuraArea, _G.SlapAuraArea, _G.SlapAuraArea) or Vector3.new(5,5,5)
