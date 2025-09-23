@@ -1,10 +1,10 @@
-print("params")
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
 
 local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Ink%20Game"
 local GamesPath, MiscPath = ModulesPath .. "/Games/", ModulesPath .. "/Misc/"
 
-local GLRLModule = loadstring(game:HttpGet(Games .. "GreenLightRedLight.lua"))()
+local GLRLModule = loadstring(game:HttpGet(GamesPath .. "GreenLightRedLight.lua"))()
+local PlayerModule = loadstring(game:HttpGet(MiscPath .. "PlayerModule.lua"))()
 
 local Window = Library:CreateWindow({
     Title = "Ink Game",
@@ -23,7 +23,7 @@ local GLRLGodMode = GLRLTab:AddToggle("God Mode", {
     Text = "God Mode",
     Default = false,
     Callback = function(Value)
-
+        GLRLModule.GodMode(Value)
     end
 })
 
@@ -38,3 +38,11 @@ local GLRLGoToEnd = GLRLTab:AddButton({
 local MiscTab = Window:AddTab("Misc", "file-box")
 
 local PlayerTab = Misc:AddLeftGroupbox("Player [NOT FE]")
+local PlayerNoclip = PlayerTab:AddToggle("Noclip", {
+    Text = "Noclip",
+    Default = false,
+    Risky = true,
+    Callback = function(Value)
+        PlayerModule.Noclip(Value)
+    end
+})
