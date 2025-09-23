@@ -8,17 +8,15 @@ warn("PlaceId atual:", pid)
 
 local url = Places[pid]
 if url then
-    local s, r = pcall(function()
-        local src = game:HttpGet(url)
-        local f = loadstring(src)
-        if f then
-            f()
-        else
-            warn("loadstring retornou nil.")
+    local src = game:HttpGet(url)
+    local f = loadstring(src)
+    if f then
+        local ok, err = pcall(f)
+        if not ok then
+            warn("Erro dentro do script:", err)
         end
-    end)
-    if not s then
-        warn("Erro ao carregar:", r)
+    else
+        warn("loadstring falhou, código inválido")
     end
 else
     warn("Nenhum script configurado para este PlaceId.")
