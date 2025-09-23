@@ -18,8 +18,8 @@ local Window = Library:CreateWindow({
 
 local GamesTab = Window:AddTab("Games", "gamepad")
 
-local GLRLTab = GamesTab:AddLeftGroupbox("Green Light Red Light")
-local GLRLGodMode = GLRLTab:AddToggle("God Mode", {
+local GLRLGroupbox = GamesTab:AddLeftGroupbox("Green Light Red Light")
+local GLRLGodMode = GLRLGroupbox:AddToggle("God Mode", {
     Text = "God Mode",
     Default = false,
     Callback = function(Value)
@@ -27,18 +27,35 @@ local GLRLGodMode = GLRLTab:AddToggle("God Mode", {
     end
 })
 
-local GLRLGoToEnd = GLRLTab:AddButton({
+local GLRLGoToEnd = GLRLGroupbox:AddButton({
     Text = "Teleport To End",
     Func = function()
         GLRLModule.TeleportToEnd()
     end,
 })
 
+local SelectedPlayer = "Random"
+local SelectPlayer = GLRLGroupbox:AddDropdown("SelectPlayer", {
+    Values = {"Random", "Player1", "Player2", "Player3"},
+    Default = 1,
+    Text = "Select A Player",
+    Callback = function(Value)
+        SelectedPlayer = Value
+        print("Dropdown new value:", SelectedPlayer)
+    end
+})
+
+local HelpInjuredPlayer = Groupbox:AddButton({
+    Text = "Help a Injured Player",
+    Func = function()
+        print("Button clicked!")
+    end,
+})
 
 local MiscTab = Window:AddTab("Misc", "file-box")
 
-local PlayerTab = Misc:AddLeftGroupbox("Player [NOT FE]")
-local PlayerNoclip = PlayerTab:AddToggle("Noclip", {
+local PlayerGroupbox = MiscTab:AddLeftGroupbox("Player [NOT FE]")
+local PlayerNoclip = PlayerGroupbox:AddToggle("Noclip", {
     Text = "Noclip",
     Default = false,
     Risky = true,
