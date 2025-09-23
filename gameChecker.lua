@@ -1,20 +1,25 @@
 local Places = {
-    [102719677723924] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/KSPR.lua",
-    [125009265613167] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/InkGame.lua"
+    [102719677723924] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/KSPR.lua",
+    [125009265613167] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/InkGame.lua"
 }
 
-local PlaceId = game.PlaceId
-warn(PlaceId)
-if Places[PlaceId] then
-    if loadstring then
-        local success, err = pcall(function()
-            local scriptContent = game:HttpGet(Places[PlaceId])
-            local func = loadstring(scriptContent)
-            if func then
-                func()
-            else
-                warn("Erro ao compilar o script.")
-            end
-        end)
+local pid = game.PlaceId
+warn("PlaceId atual:", pid)
+
+local url = Places[pid]
+if url then
+    local s, r = pcall(function()
+        local src = game:HttpGet(url)
+        local f = loadstring(src)
+        if f then
+            f()
+        else
+            warn("loadstring retornou nil.")
+        end
+    end)
+    if not s then
+        warn("Erro ao carregar:", r)
     end
+else
+    warn("Nenhum script configurado para este PlaceId.")
 end
