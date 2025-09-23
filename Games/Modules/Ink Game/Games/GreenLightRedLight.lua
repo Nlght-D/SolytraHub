@@ -8,8 +8,12 @@ function GLRL.TeleportToEnd()
     end
 
     local torso = Character.Torso
+    torso.Anchored = true
             torso.Position = Vector3.new(-42, 1024, 145)
     torso.AssemblyLinearVelocity = Vector3.zero
+    task.delay(.2, function()
+        torso.Anchored = false
+    end)
 end
 
 function GLRL.GodMode(Boolean)
