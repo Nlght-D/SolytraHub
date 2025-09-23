@@ -1,10 +1,20 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
 
 local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Ink%20Game"
-local GamesPath, MiscPath = ModulesPath .. "/Games/", ModulesPath .. "/Misc/"
+local GamesPath, MiscPath, UtilsPath = ModulesPath .. "/Games/", ModulesPath .. "/Misc/", ModulesPath .. "/Utils/"
 
-local GLRLModule = loadstring(game:HttpGet(GamesPath .. "GreenLightRedLight.lua"))()
-local PlayerModule = loadstring(game:HttpGet(MiscPath .. "PlayerModule.lua"))()
+local function Require(Name)
+    return loadstring(game:HttpGet(GamesPath .. Name .. '.lua'))()
+end
+
+-- Games
+local GLRLModule = Require("GreenLightRedLight")
+
+-- Misc
+local PlayerModule = Require("PlayerModule")
+
+-- Utils
+local GetPlayersModule = Require("GetPlayers")
 
 local Window = Library:CreateWindow({
     Title = "Ink Game",
@@ -35,8 +45,9 @@ local GLRLGoToEnd = GLRLGroupbox:AddButton({
 })
 
 local SelectedPlayer = "Random"
+local PlayersList = GetPlayersModule.GetPlayers()
 local SelectPlayer = GLRLGroupbox:AddDropdown("SelectPlayer", {
-    Values = {"Random", "Player1", "Player2", "Player3"},
+    Values = PlayersList,
     Default = 1,
     Text = "Select A Player",
     Callback = function(Value)
@@ -45,7 +56,7 @@ local SelectPlayer = GLRLGroupbox:AddDropdown("SelectPlayer", {
     end
 })
 
-local HelpInjuredPlayer = Groupbox:AddButton({
+local HelpInjuredPlayer = GLRLGroupbox:AddButton({
     Text = "Help a Injured Player",
     Func = function()
         print("Button clicked!")
