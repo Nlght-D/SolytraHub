@@ -4,7 +4,7 @@ local Places = {
 }
 
 local PlaceId = game.PlaceId
-
+warn(PlaceId)
 if Places[PlaceId] then
     if loadstring then
         local success, err = pcall(function()
