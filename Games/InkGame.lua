@@ -1,5 +1,10 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
-local GLRLModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Ink%20Game/GreenLightRedLight.lua"))()
+
+local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Ink%20Game"
+local GamesPath, MiscPath = ModulesPath .. "/Games/", ModulesPath .. "/Misc/"
+
+local GLRLModule = loadstring(game:HttpGet(Games .. "GreenLightRedLight.lua"))()
+
 local Window = Library:CreateWindow({
     Title = "Ink Game",
     Footer = "Solytra Hub",
@@ -29,4 +34,6 @@ local GLRLGoToEnd = GLRLTab:AddButton({
 })
 
 
-local CombatTab = Window:AddTab("Combat", "crosshair")
+local MiscTab = Window:AddTab("Misc", "file-box")
+
+local PlayerTab = Misc:AddLeftGroupbox("Player [NOT FE]")
