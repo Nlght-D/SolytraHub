@@ -3,18 +3,18 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deivi
 local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Ink%20Game"
 local GamesPath, MiscPath, UtilsPath = ModulesPath .. "/Games/", ModulesPath .. "/Misc/", ModulesPath .. "/Utils/"
 
-local function Require(Name)
-    return loadstring(game:HttpGet(GamesPath .. Name .. '.lua'))()
+local function Require(Path, Name)
+    return loadstring(game:HttpGet(Path .. Name .. ".lua"))()
 end
 
 -- Games
-local GLRLModule = Require("GreenLightRedLight")
+local GLRLModule = Require(GamesPath, "GreenLightRedLight")
 
 -- Misc
-local PlayerModule = Require("PlayerModule")
+local PlayerModule = Require(MiscPath, "PlayerModule")
 
 -- Utils
-local GetPlayersModule = Require("GetPlayers")
+local GetPlayersModule = Require(UtilsPath, "GetPlayers")
 
 local Window = Library:CreateWindow({
     Title = "Ink Game",
