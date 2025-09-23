@@ -4,7 +4,11 @@ local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/h
 local GamesPath, MiscPath, UtilsPath = ModulesPath .. "/Games/", ModulesPath .. "/Misc/", ModulesPath .. "/Utils/"
 
 local function Require(Path, Name)
-    return loadstring(game:HttpGet(Path .. Name .. ".lua"))()
+    local f = loadstring(game:HttpGet(Path .. Name .. ".lua"))
+    if f then
+        local ok, res = pcall(f)
+        return res -- pode ser nil, se o módulo não retornar nada
+    end
 end
 
 -- Games
