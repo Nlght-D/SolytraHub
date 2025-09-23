@@ -1,6 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
-
-local GLRLModule = loadstring()
+local GLRLModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Ink%20Game/GreenLightRedLight.lua"))()
 
 local Window = Library:CreateWindow({
     Title = "Ink Game",
@@ -26,7 +25,7 @@ local GLRLGodMode = GLRLTab:AddToggle("God Mode", {
 local GLRLGoToEnd = GLRLTab:AddButton({
     Text = "Teleport To End",
     Func = function()
-        print("Button clicked!")
+        GLRLModule.TeleportToEnd()
     end,
 })
 
