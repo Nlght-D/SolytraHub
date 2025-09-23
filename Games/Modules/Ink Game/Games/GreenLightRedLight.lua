@@ -8,12 +8,18 @@ function GLRL.TeleportToEnd()
     end
 
     local torso = Character.Torso
-    torso.Anchored = true
+    local ts = game:GetService("TweenService")
+    local info = TweenInfo.new(1, Enum.EasingStyle.Linear)
+    local goal = {CFrame = CFrame.new(-42, 1024, 145)}
+    local tween = ts:Create(torso, info, goal)
+    tween:Play()
+
+   --[[ torso.Anchored = true
             torso.Position = Vector3.new(-42, 1024, 145)
     torso.AssemblyLinearVelocity = Vector3.zero
-    task.delay(.2, function()
+    task.delay(1, function()
         torso.Anchored = false
-    end)
+    end)]]
 end
 
 function GLRL.GodMode(Boolean)
