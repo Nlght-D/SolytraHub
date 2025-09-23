@@ -1,5 +1,5 @@
 local module = {}
-local Players = game:game:GetService("Players")
+local Players = game:GetService("Players")
 
 function module.GetPlayers()
     local Table = {}

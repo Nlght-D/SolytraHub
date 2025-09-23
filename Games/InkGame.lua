@@ -7,7 +7,7 @@ local function Require(Path, Name)
     local f = loadstring(game:HttpGet(Path .. Name .. ".lua"))
     if f then
         local ok, res = pcall(f)
-        return res -- pode ser nil, se o módulo não retornar nada
+        return res
     end
 end
 
