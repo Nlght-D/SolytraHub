@@ -9,6 +9,14 @@ local Window = Library:CreateWindow({
 }) 
 
 local GamesTab = Window:AddTab("Games", "gamepad")
-local CombatTab = Window:AddTab("Combat", "crosshair")
 
-local GLRDTab = GamesTab:AddLeftGroupbox("Green Light Red Light")
+local GLRLTab = GamesTab:AddLeftGroupbox("Green Light Red Light")
+local GodMode = Groupbox:AddToggle("GLRL God Mode", {
+    Text = "God Mode",
+    Default = false,
+    Callback = function(Value)
+        
+    end
+})
+
+local CombatTab = Window:AddTab("Combat", "crosshair")
