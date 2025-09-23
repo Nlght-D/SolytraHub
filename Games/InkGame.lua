@@ -15,6 +15,7 @@ local PlayerModule = Require(MiscPath, "PlayerModule")
 
 -- Utils
 local GetPlayersModule = Require(UtilsPath, "GetPlayers")
+warn("Loaded")
 
 local Window = Library:CreateWindow({
     Title = "Ink Game",
