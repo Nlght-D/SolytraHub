@@ -6,3 +6,8 @@ local Window = Library:CreateWindow({
     Center = true,
     AutoShow = true
 }) 
+
+local GamesTab = Window:AddTab("Games", "home")
+local CombatTab = Window:AddTab("Combat", "crosshair")
+
+local GLRDTab = MainTab:AddLeftGroupbox("Green Light Red Light")
