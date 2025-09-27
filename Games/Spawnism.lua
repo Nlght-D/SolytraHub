@@ -11,7 +11,8 @@ local function Require(Path, Name)
     end
 end
 
-local BypassHomelander = Require(Fun, "BypassHomelander")
+local BypassHomelander = Require(FunPath, "BypassHomelander")
+local Aimbot = Require(FunPath, "Aimbot")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -24,13 +25,11 @@ local Window = Library:CreateWindow({
 
 local MainTab = Window:AddTab("Main", "ferris-wheel")
 
-local FunGroupbox = FunTab:AddLeftGroupbox("Fun")
+local FunGroupbox = MainTab:AddLeftGroupbox("Fun")
 local FunLazer = FunGroupbox:AddToggle("Lazer", {
     Text = "Lazer",
     Default = false,
-    Callback = function(Value)
-        BypassHomelander.Bypass(Value)
-    end
+
 })
 
 local FunLazerKeybind = FunLazer:AddKeyPicker("Lazer Keybind", {
@@ -38,6 +37,27 @@ local FunLazerKeybind = FunLazer:AddKeyPicker("Lazer Keybind", {
     Text = "Lazer Keybind",
     Mode = "Toggle",
     
-    SyncToggleState = false,
+    SyncToggleState = true,
+    Callback = function(Value)
+        BypassHomelander.Bypass(Value)
+    end
 })
+
+local FunAimbot = FunGroupbox:AddToggle("Aimbot", {
+    Text = "Aimbot",
+    Default = false,
+})
+
+local FunAimbotKeybind = FunLazer:AddKeyPicker("Aimbot Keybind", {
+    Default = "K",
+    Text = "Aimbot Keybind",
+    Mode = "Toggle",
+    
+    SyncToggleState = true,
+    Callback = function(Value)
+        Aimbot.ToggleLockOn(Value)
+    end
+})
+
+
 

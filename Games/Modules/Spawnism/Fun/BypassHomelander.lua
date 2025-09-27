@@ -1,6 +1,8 @@
 local Module = {}
 local player = game.Players.LocalPlayer
-local remoteEvent = player.Character.LazerVision.RemoteEvent
+local remoteEvent = player.Character.LazerVision.RemoteEvent; player.CharacterAdded:Connect(function(Character)
+    remoteEvent = Character.LazerVision.RemoteEvent
+end)
 local mouse
 
 pcall(function()
