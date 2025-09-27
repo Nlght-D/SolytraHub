@@ -12,6 +12,7 @@ local function Require(Path, Name)
 end
 
 local BypassHomelander = Require(FunPath, "BypassHomelander")
+local InfiniteStamina = Require(FunPath, "InfiniteStamina")
 local Aimbot = Require(FunPath, "Aimbot")
 
 local Window = Library:CreateWindow({
@@ -72,6 +73,6 @@ local FunAimbotSlider = FunGroupbox:AddSlider("Aimbot Slider", {
 local FunInfiniteStamina = FunGroupbox:AddButton({
     Text = "Infinite Stamina",
     Func = function()
-        print("Button clicked!")
+        InfiniteStamina.SetInfiniteStamina()
     end,
 })
