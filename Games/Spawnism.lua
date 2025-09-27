@@ -69,4 +69,9 @@ local FunAimbotSlider = FunGroupbox:AddSlider("Aimbot Slider", {
     end
 })
 
-
+local FunInfiniteStamina = FunGroupbox:AddButton({
+    Text = "Infinite Stamina",
+    Func = function()
+        print("Button clicked!")
+    end,
+})
