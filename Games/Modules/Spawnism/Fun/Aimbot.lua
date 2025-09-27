@@ -1,9 +1,7 @@
 local AutoAim = {}
 AutoAim.Enabled = false
-AutoAim.Sensitivity = 0.3
-AutoAim.MaxDistance = 100
+AutoAim.MaxDistance = 50
 AutoAim.FOV = 70
-AutoAim.Smoothness = 0.2
 
 local player = game.Players.LocalPlayer
 function AutoAim.FindTargetInFOV(localPlayer)
@@ -41,15 +39,6 @@ function AutoAim.FindTargetInFOV(localPlayer)
     return closestTarget
 end
 
-function AutoAim.SmoothCameraLook(camera, targetPosition, deltaTime)
-    local currentLook = camera.CFrame.LookVector
-    local desiredLook = (targetPosition - camera.CFrame.Position).Unit
-    
-    local smoothedLook = currentLook:Lerp(desiredLook, AutoAim.Smoothness * deltaTime * 60)
-    
-    return CFrame.lookAt(camera.CFrame.Position, camera.CFrame.Position + smoothedLook)
-end
-
 function AutoAim.AimCameraAtTarget()
     if not AutoAim.Enabled then return end
     
@@ -62,20 +51,17 @@ function AutoAim.AimCameraAtTarget()
         local head = targetPlayer.Character:FindFirstChild("Head")
         if not head then return end
         
-        local newCFrame = AutoAim.SmoothCameraLook(camera, head.Position, game:GetService("RunService").RenderStepped:Wait())
-        camera.CFrame = newCFrame
+        local screenPoint, onScreen = camera:WorldToViewportPoint(head.Position)
+        mousemoveabs(screenPoint.X, screenPoint.Y)
     end
 end
 
 function AutoAim.ToggleLockOn(Boolean)
     AutoAim.Enabled = Boolean
-    if Boolean then
-        player.CameraMode = Enum.CameraMode.LockFirstPerson
-    else
-        player.CameraMode = Enum.CameraMode.Classic; player.CameraMinZoomDistance = 10
-        task.wait(1)
-        player.CameraMinZoomDistance = .5
-    end
+end
+
+function AutoAim.ChangeMaxDistance(NewDistance)
+    AutoAim.MaxDistance = NewDistance
 end
 
 game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
