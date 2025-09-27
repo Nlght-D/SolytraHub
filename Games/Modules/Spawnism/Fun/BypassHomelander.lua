@@ -1,8 +1,6 @@
 local Module = {}
 local player = game.Players.LocalPlayer
-local remoteEvent = player.Character.LazerVision.RemoteEvent; player.CharacterAdded:Connect(function(Character)
-    remoteEvent = Character.LazerVision.RemoteEvent
-end)
+local remoteEvent = player.Character.LazerVision.RemoteEvent
 local mouse
 
 pcall(function()
@@ -14,6 +12,8 @@ local firingLoop
 
 local function startFiring()
     if running then return end
+    remoteEvent = Character.LazerVision.RemoteEvent
+
     running = true
     local firstShot = false
     if mouse and mouse.Hit then

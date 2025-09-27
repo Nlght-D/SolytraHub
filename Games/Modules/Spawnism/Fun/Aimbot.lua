@@ -68,6 +68,11 @@ end
 
 function AutoAim.ToggleLockOn(Boolean)
     AutoAim.Enabled = Boolean
+    if Boolean then
+        player.CameraMode = Enum.CameraMode.LockFirstPerson
+    else
+        player.CameraMode = Enum.CameraMode.Classic
+    end
 end
 
 game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
