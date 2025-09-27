@@ -27,11 +27,10 @@ local MainTab = Window:AddTab("Main", "ferris-wheel")
 
 local FunGroupbox = MainTab:AddLeftGroupbox("Fun")
 local FunLazer = FunGroupbox:AddToggle("Lazer", {
-    Text = "Lazer",
+    Text = "Homelander Lazer",
     Default = false,
 
 })
-
 local FunLazerKeybind = FunLazer:AddKeyPicker("Lazer Keybind", {
     Default = "F",
     Text = "Lazer Keybind",
@@ -47,7 +46,6 @@ local FunAimbot = FunGroupbox:AddToggle("Aimbot", {
     Text = "Aimbot",
     Default = false,
 })
-
 local FunAimbotKeybind = FunAimbot:AddKeyPicker("Aimbot Keybind", {
     Default = "K",
     Text = "Aimbot Keybind",
@@ -58,6 +56,16 @@ local FunAimbotKeybind = FunAimbot:AddKeyPicker("Aimbot Keybind", {
         Aimbot.ToggleLockOn(Value)
     end
 })
-
+local FunAimbotSlider = FunGroupbox:AddSlider("Aimbot Slider", {
+    Text = "Aimbot Distance",
+    Default = 50,
+    Min = 0,
+    Max = 100,
+    Rounding = 1,
+    Compact = false,
+    Callback = function(Value)
+        Aimbot.ChangeMaxDistance(Value)
+    end
+})
 
 
