@@ -12,7 +12,7 @@ local firingLoop
 
 local function startFiring()
     if running then return end
-    remoteEvent = Character.LazerVision.RemoteEvent
+    remoteEvent = player.Character.LazerVision.RemoteEvent
 
     running = true
     local firstShot = false

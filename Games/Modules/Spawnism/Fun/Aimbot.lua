@@ -5,6 +5,7 @@ AutoAim.MaxDistance = 100
 AutoAim.FOV = 70
 AutoAim.Smoothness = 0.2
 
+local player = game.Players.LocalPlayer
 function AutoAim.FindTargetInFOV(localPlayer)
     if not localPlayer then return nil end
     

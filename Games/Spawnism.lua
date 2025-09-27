@@ -48,7 +48,7 @@ local FunAimbot = FunGroupbox:AddToggle("Aimbot", {
     Default = false,
 })
 
-local FunAimbotKeybind = FunLazer:AddKeyPicker("Aimbot Keybind", {
+local FunAimbotKeybind = FunAimbot:AddKeyPicker("Aimbot Keybind", {
     Default = "K",
     Text = "Aimbot Keybind",
     Mode = "Toggle",
