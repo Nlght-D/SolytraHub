@@ -79,9 +79,7 @@ function AutoAim.ToggleLockOn(Boolean)
 end
 
 function AutomAim.ChangeMaxDistance(Value)
-    if not AutoAim.MaxDistance == Value then
-        AutoAim.MaxDistance = Value
-    end
+    AutoAim.MaxDistance = Value
 end
 
 game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
