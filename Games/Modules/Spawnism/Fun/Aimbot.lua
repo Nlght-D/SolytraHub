@@ -72,7 +72,9 @@ function AutoAim.ToggleLockOn(Boolean)
     if Boolean then
         player.CameraMode = Enum.CameraMode.LockFirstPerson
     else
-        player.CameraMode = Enum.CameraMode.Classic
+        player.CameraMode = Enum.CameraMode.Classic; player.CameraMinZoomDistance = 10
+        task.wait(1)
+        player.CameraMinZoomDistance = .5
     end
 end
 
