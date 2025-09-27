@@ -28,6 +28,7 @@ local MainTab = Window:AddTab("Main", "ferris-wheel")
 local FunGroupbox = MainTab:AddLeftGroupbox("Fun")
 local FunLazer = FunGroupbox:AddToggle("Lazer", {
     Text = "Homelander Lazer",
+    Tooltip = "THE CHOSEN ONE",
     Default = false,
 
 })
