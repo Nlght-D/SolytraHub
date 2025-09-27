@@ -78,10 +78,6 @@ function AutoAim.ToggleLockOn(Boolean)
     end
 end
 
-function AutomAim.ChangeMaxDistance(Value)
-    AutoAim.MaxDistance = Value
-end
-
 game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
     AutoAim.AimCameraAtTarget(deltaTime)
 end)
