@@ -18,6 +18,7 @@ local Aimbot = Require(FunPath, "Aimbot")
 local Esp = Require(FunPath, "Esp")
 
 local Fly = Require(PlayerPath, "Fly")
+local Noclip = Require(PlayerPath, "Noclip")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -89,6 +90,22 @@ local FunEsp = FunGroupbox:AddButton({
 })
 
 local PlayerGroupbox = MainTab:AddRightGroupbox("Player")
+local PlayerNoclip = PlayerGroupbox:AddToggle("Noclip"{
+    Text = "Noclip",
+    Tooltip = "BACKROOMS",
+    Default = false,
+})
+local PlayerNoclipKeybind = PlayerNoclip:AddKeyPicker("Noclip Keybind", {
+    Default = "N",
+    Text = "Noclip Keybind",
+    Mode = "Toggle",
+    
+    SyncToggleState = true,
+    Callback = function(Value)
+        Noclip.Toggle(Value)
+    end
+})
+
 local PlayerFly = PlayerGroupbox:AddToggle("Fly", {
     Text = "Fly",
     Tooltip = "TCO VS TDL",
@@ -114,4 +131,11 @@ local PlayerFlySlider = PlayerGroupbox:AddSlider("Fly Slider", {
     Callback = function(Value)
         Fly.ChangeFlyVelocity(Value)
     end
+})
+
+local PlayerListDropdown = player:AddDropdown("Player Dropdown", {
+    SpecialType = "Player",
+    Text = "Select a Player",
+    Multi = false,
+    ExcludeLocalPlayer = true
 })
