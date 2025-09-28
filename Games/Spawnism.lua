@@ -165,7 +165,7 @@ local PlacesSavePosition = PlacesTab:AddButton({
     end,
 })
 PlacesSavePosition:AddButton({
-    Text = "Back To Saved Position",
+    Text = "Return Postion",
     Func = function()
         TeleportToPlace.BackToSavedPosition()
     end

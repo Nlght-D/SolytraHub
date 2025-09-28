@@ -17,7 +17,7 @@ local player = game.Players.LocalPlayer
 function module.SavePosition()
     local character = player.Character
     if character and character:FindFirstChild("HumanoidRootPart") then
-        SavedPosition = character.HumanoidRootPart.Position
+        module.SavedPosition = character.HumanoidRootPart.Position
     end
 end
 
