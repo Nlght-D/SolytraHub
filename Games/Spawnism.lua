@@ -139,7 +139,7 @@ local PlayerList = PlayerGroupbox:AddDropdown("Player Dropdown", {
     SpecialType = "Player",
     Text = "Select a Player",
     Multi = false,
-    ExcludeLocalPlayer = true
+    ExcludeLocalPlayer = true,
     Callback = function(Value)
         SelectedPlayer = Value
     end
