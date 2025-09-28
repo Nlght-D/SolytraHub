@@ -17,7 +17,7 @@ function module.Teleport(Place)
         return
     end
     local Character = player.Character
-    Character:MoveTo(module.Places[Place])
+    Character:MoveTo(Vector3.new(module.Places[Place]))
 end
 
 return module
