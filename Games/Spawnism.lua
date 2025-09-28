@@ -254,6 +254,14 @@ local ShopBuy = ShopTab:AddButton({
 })
 
 local WorkspaceGroupbox = MainTab:AddLeftGroupbox("Workspace")
+local WorkspaceAntiSCP = WorkspaceGroupbox:AddToggle("Anti SCP", {
+    Text = "Anti SCP",
+    Default = false,
+    Tooltip = "NO MORE GAMES",
+    Callback = function(Value)
+        AntiSCP.Toggle(Value)
+    end
+})
 
 local GravityValue = 196.1
 local WorkspaceCustomGravity = WorkspaceGroupbox:AddToggle("Custom Gravity", {
@@ -276,16 +284,6 @@ local WorkspaceCustomGravitySlider = WorkspaceGroupbox:AddSlider("Custom Gravity
     end
 })
 
-
-local WorkspaceAntiSCP = WorkspaceGroupbox:AddToggle("Anti SCP", {
-    Text = "Anti SCP",
-    Default = false,
-    Tooltip = "NO MORE GAMES",
-    Callback = function(Value)
-        AntiSCP.Toggle(Value)
-    end
-})
-
 local WorkspaceCreateSprintFX = WorkspaceGroupbox:AddButton({
     Text = "Create Sprint FX",
     Func = function()
@@ -301,3 +299,4 @@ WorkspaceCreateSprintFX:AddButton({
     end,
     DoubleClick = true
 })
+
