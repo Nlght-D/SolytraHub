@@ -90,7 +90,7 @@ local FunEsp = FunGroupbox:AddButton({
 })
 
 local PlayerGroupbox = MainTab:AddRightGroupbox("Player")
-local PlayerNoclip = PlayerGroupbox:AddToggle("Noclip"{
+local PlayerNoclip = PlayerGroupbox:AddToggle("Noclip", {
     Text = "Noclip",
     Tooltip = "BACKROOMS",
     Default = false,
