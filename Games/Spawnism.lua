@@ -89,12 +89,12 @@ local FunEsp = FunGroupbox:AddButton({
 })
 
 local PlayerGroupbox = MainTab:AddRightGroupbox("Player")
-local PlayerFly = FunGroupbox:AddToggle("Fly", {
+local PlayerFly = PlayerGroupbox:AddToggle("Fly", {
     Text = "Fly",
     Tooltip = "TCO VS TDL",
     Default = false,
 })
-local PlayerFlyKeybind = PlayerGroupbox:AddKeyPicker("Fly Keybind", {
+local PlayerFlyKeybind = PlayerFly:AddKeyPicker("Fly Keybind", {
     Default = "F",
     Text = "Fly Keybind",
     Mode = "Toggle",
