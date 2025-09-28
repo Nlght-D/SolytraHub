@@ -27,6 +27,7 @@ local TeleportToPlace = Require(UselessPath, "TeleportToPlace")
 
 local AntiSCP = Require(WorkspacePath, "AntiSCP")
 local CustomGravity = Require(WorkspacePath, "CustomGravity")
+local SprintFX = Require(WorkspacePath, "SprintFX")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -267,7 +268,7 @@ local WorkspaceCustomGravitySlider = WorkspaceGroupbox:AddSlider("Custom Gravity
     Text = "Gravity Number",
     Default = 196,
     Min = 0,
-    Max = 400,
+    Max = 500,
     Rounding = 1,
     Compact = false,
     Callback = function(Value)
@@ -283,4 +284,20 @@ local WorkspaceAntiSCP = WorkspaceGroupbox:AddToggle("Anti SCP", {
     Callback = function(Value)
         AntiSCP.Toggle(Value)
     end
+})
+
+local WorkspaceCreateSprintFX = WorkspaceGroupbox:AddButton({
+    Text = "Create Sprint FX",
+    Func = function()
+        SprintFX.Create()
+    end,
+    DoubleClick = true
+})
+
+WorkspaceCreateSprintFX:AddButton({
+    Text = "Destroy Sprint FX",
+    Func = function()
+        SprintFX.Destroy()
+    end,
+    DoubleClick = true
 })
