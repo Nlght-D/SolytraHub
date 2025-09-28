@@ -13,7 +13,9 @@ end
 
 local BypassHomelander = Require(FunPath, "BypassHomelander")
 local InfiniteStamina = Require(FunPath, "InfiniteStamina")
+
 local Aimbot = Require(FunPath, "Aimbot")
+local Esp = Require(FunPath, "Esp")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -74,5 +76,12 @@ local FunInfiniteStamina = FunGroupbox:AddButton({
     Text = "Infinite Stamina",
     Func = function()
         InfiniteStamina.SetInfiniteStamina()
+    end,
+})
+
+local FunEsp = FunGroupbox:AddButton({
+    Text = "ESP Function",
+    Func = function()
+        Esp.Run()
     end,
 })
