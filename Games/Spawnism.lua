@@ -21,6 +21,7 @@ local Fly = Require(PlayerPath, "Fly")
 local Noclip = Require(PlayerPath, "Noclip")
 local TeleportToPlayer = Require(PlayerPath, "TeleportToPlayer")
 
+local BuyItem = Require(UselessPath, "BuyItem")
 local TeleportToPlace = Require(UselessPath, "TeleportToPlace")
 
 local Window = Library:CreateWindow({
@@ -77,18 +78,17 @@ local FunAimbotSlider = FunGroupbox:AddSlider("Aimbot Slider", {
         Aimbot.ChangeMaxDistance(Value)
     end
 })
+local FunEsp = FunGroupbox:AddButton({
+    Text = "ESP Function",
+    Func = function()
+        Esp.Toggle()
+    end,
+})
 
 local FunInfiniteStamina = FunGroupbox:AddButton({
     Text = "Infinite Stamina",
     Func = function()
         InfiniteStamina.SetInfiniteStamina()
-    end,
-})
-
-local FunEsp = FunGroupbox:AddButton({
-    Text = "ESP Function",
-    Func = function()
-        Esp.Toggle()
     end,
 })
 
@@ -171,9 +171,10 @@ PlacesSavePosition:AddButton({
     end
 })
 
-local SelectedPlace = "Church"
+local PlacesListTable = {"Church", "Spawndonalds", "Spawn Games", "Parking", "Dreamy House", "SCP-173 [Containment]", "SCP-173 [Outside]", "Abyss", "Spawn"}
+local SelectedPlace = PlacesListTable[1]
 local PlacesList = PlacesTab:AddDropdown("Places List", {
-    Values = {"Church", "Spawndonalds", "Spawn Games", "Parking", "Dreamy House", "SCP-173 [Containment]", "SCP-173 [Outside]", "Abyss", "Spawn"},
+    Values = PlacesListTable,
     Default = 1,
     Multi = false, 
     Text = "Places list",
@@ -181,7 +182,6 @@ local PlacesList = PlacesTab:AddDropdown("Places List", {
         SelectedPlace = Value
     end
 })
-
 local PlacesTeleport = PlacesTab:AddButton({
     Text = "Teleport To Place",
     Func = function()
@@ -189,5 +189,31 @@ local PlacesTeleport = PlacesTab:AddButton({
     end,
 })
 
+local function GetItems()
+    local Items = {}
+    for _, Item in ipairs(game:GetService("ReplicatedStorage").ShopItems:GetChildren()) do
+        table.insert(Items, Item.Name)
+    end
 
+    return Items
+end
 local ShopTab = UselessTabbox:AddTab("Shop")
+local ShopExplation = ShopTab:AddLabel("You can buy an item on a 60-second cooldown(?)")
+
+local ShopListTable = GetItems()
+local SelectedItem = ShopListTable[1]
+local ShopList = ShopTab:AddDropdown("Shop List", {
+    Values = ShopListTable,
+    Default = 1,
+    Multi = false, 
+    Text = "Shop list",
+    Callback = function(Value)
+        SelectedItem = Value
+    end
+}
+local ShopBuy = ShopTab:AddButton({
+    Text = "Buy Item",
+    Func = function()
+        BuyItem.Buy(SelectedItem)
+    end,
+})
