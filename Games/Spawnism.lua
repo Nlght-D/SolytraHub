@@ -154,11 +154,33 @@ local PlayerTeleport = PlayerGroupbox:AddButton({
         TeleportToPlayer.Teleport(SelectedPlayer)
     end,
 })
-local PlayerOrbit = PlayerGroupbox:AddToggle("Player Orbit", {
+local PlayerOrbit = PlayerGroupbox:AddToggle("Orbit", {
     Text = "Orbit Player",
     Default = false,
     Callback = function(Value)
         Orbit.Toggle(Value, SelectedPlayer)
+    end
+})
+local PlayerOrbitSliderSpeed = PlayerGroupbox:AddSlider("Orbit Speed Slider", {
+    Text = "Orbit Velocity",
+    Default = 2,
+    Min = 1,
+    Max = 10,
+    Rounding = 1,
+    Compact = false,
+    Callback = function(Value)
+        Orbit.ChangeValue(Value, "Speed")
+    end
+})
+local PlayerOrbitSliderRadius = PlayerGroupbox:AddSlider("Orbit Radius Slider", {
+    Text = "Orbit Radius",
+    Default = 10,
+    Min = 1,
+    Max = 15,
+    Rounding = 1,
+    Compact = false,
+    Callback = function(Value)
+        Orbit.ChangeValue(Value, "Radius")
     end
 })
 

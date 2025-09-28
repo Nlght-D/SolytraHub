@@ -23,6 +23,10 @@ function module.Toggle(Value, targetPlayer)
     end
 end
 
+function module.ChangeValue(Value, Type)
+    module[Type] = Value
+end
+
 RunService.RenderStepped:Connect(function(dt)
     if module.Enabled and module.Target and module.Target.Character then
         local targetHRP = module.Target.Character:FindFirstChild("HumanoidRootPart")
