@@ -5,7 +5,9 @@ function module.Teleport(SelectedPlayer)
     local VictimCharacter = SelectedPlayer.Character
     local Character = Player.Character
 
-    Character:MoveTo(VictimCharacter:WaitForChild("HumanoidRootPart").Position)
+    if Character and Character:FindFirstChild("HumanoidRootPart") then
+        Character:MoveTo(VictimCharacter:WaitForChild("HumanoidRootPart").Position)
+    end
 end
 
 return module

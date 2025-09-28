@@ -1,23 +1,26 @@
 local module = {}
 module.Places = {
-    ["Church"] = -50, 17, 133,
-    ["Spawndonalds"] = 125, 16, 103,
-    ["Spawn Games"] = 146, 17, 192,
-    ["Parking"] = 33, 2, 230,
-    ["Dreamy House"] = 202, 4, 410,
-    ["SCP-173 [Containment]"] = -169, -46, 26,
-    ["SCP-173 [Outside]"] = -202, -46, 47,
-    ["Abyss"] = 511, -396, -355,
-    ["Spawn"] = 28, 16, 214
+    ["Church"] = Vector3.new(-50, 17, 133),
+    ["Spawndonalds"] = Vector3.new(125, 16, 103),
+    ["Spawn Games"] = Vector3.new(146, 17, 192),
+    ["Parking"] = Vector3.new(33, 2, 230),
+    ["Dreamy House"] = Vector3.new(202, 4, 410),
+    ["SCP-173 [Containment]"] = Vector3.new(-169, -46, 26),
+    ["SCP-173 [Outside]"] = Vector3.new(-202, -46, 47),
+    ["Abyss"] = Vector3.new(511, -396, -355),
+    ["Spawn"] = Vector3.new(28, 16, 214)
 }
+
 local player = game.Players.LocalPlayer
 
 function module.Teleport(Place)
-    if not module.Places[Place] then
-        return
+    local position = module.Places[Place]
+    if not position then return end
+
+    local character = player.Character
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        character:MoveTo(position)
     end
-    local Character = player.Character
-    Character:MoveTo(Vector3.new(module.Places[Place]))
 end
 
 return module
