@@ -1,6 +1,7 @@
 local Places = {
     [102719677723924] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/KSPR.lua",
-    [125009265613167] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/InkGame.lua"
+    [125009265613167] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/InkGame.lua",
+    [135857312687770] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/Spawnism.lua"
 }
 
 local pid = game.PlaceId

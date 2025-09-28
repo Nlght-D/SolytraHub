@@ -17,6 +17,8 @@ local InfiniteStamina = Require(FunPath, "InfiniteStamina")
 local Aimbot = Require(FunPath, "Aimbot")
 local Esp = Require(FunPath, "Esp")
 
+local Fly = Require(PlayerPath, "Fly")
+
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
     Footer = "Solytra Hub",
@@ -36,7 +38,7 @@ local FunLazer = FunGroupbox:AddToggle("Lazer", {
 
 })
 local FunLazerKeybind = FunLazer:AddKeyPicker("Lazer Keybind", {
-    Default = "F",
+    Default = "Z",
     Text = "Lazer Keybind",
     Mode = "Toggle",
     
@@ -84,4 +86,32 @@ local FunEsp = FunGroupbox:AddButton({
     Func = function()
         Esp.Toggle()
     end,
+})
+
+local PlayerGroupbox = MainTab:AddRightGroupbox("Player")
+local PlayerFly = FunGroupbox:AddToggle("Fly", {
+    Text = "Fly",
+    Tooltip = "TCO VS TDL",
+    Default = false,
+})
+local PlayerFlyKeybind = FunLazer:AddKeyPicker("Fly Keybind", {
+    Default = "F",
+    Text = "Fly Keybind",
+    Mode = "Toggle",
+    
+    SyncToggleState = true,
+    Callback = function(Value)
+        Fly.Toggle(Value)
+    end
+})
+local PlayerFlySlider = FunGroupbox:AddSlider("Fly Slider", {
+    Text = "Fly Velocity",
+    Default = 50,
+    Min = 0,
+    Max = 100,
+    Rounding = 1,
+    Compact = false,
+    Callback = function(Value)
+        Fly.ChangeFlyVelocity(Value)
+    end
 })
