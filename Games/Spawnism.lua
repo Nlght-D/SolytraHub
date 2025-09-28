@@ -133,7 +133,7 @@ local PlayerFlySlider = PlayerGroupbox:AddSlider("Fly Slider", {
     end
 })
 
-local PlayerListDropdown = player:AddDropdown("Player Dropdown", {
+local PlayerListDropdown = PlayerGroupbox:AddDropdown("Player Dropdown", {
     SpecialType = "Player",
     Text = "Select a Player",
     Multi = false,
