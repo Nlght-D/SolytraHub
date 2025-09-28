@@ -171,7 +171,6 @@ PlacesSavePosition:AddButton({
     end
 })
 
-
 local SelectedPlace = "Church"
 local PlacesList = PlacesTab:AddDropdown("Places List", {
     Values = {"Church", "Spawndonalds", "Spawn Games", "Parking", "Dreamy House", "SCP-173 [Containment]", "SCP-173 [Outside]", "Abyss", "Spawn"},
