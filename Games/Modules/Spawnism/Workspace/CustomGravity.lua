@@ -11,6 +11,7 @@ local DefaultGravity = 196.1
 function module.Toggle(Value, Number)
 	module.Enabled = Value
 	if not Value then
+        GravityValue.Value = DefaultGravity
 		workspace.Gravity = DefaultGravity
 		return
 	end
