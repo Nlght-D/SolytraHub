@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
 local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Spawnism"
 
-local FunPath, PlayerPath, UselessPath = ModulesPath .. "/Fun/", ModulesPath .. "/Player/", ModulesPath .. "/Useless/"
+local FunPath, PlayerPath, UselessPath, WorkspacePath = ModulesPath .. "/Fun/", ModulesPath .. "/Player/", ModulesPath .. "/Useless/", ModulesPath .. "/Workspace/"
 
 local function Require(Path, Name)
     local f = loadstring(game:HttpGet(Path .. Name .. ".lua"))
@@ -24,6 +24,8 @@ local Orbit = Require(PlayerPath, "Orbit")
 
 local BuyItem = Require(UselessPath, "BuyItem")
 local TeleportToPlace = Require(UselessPath, "TeleportToPlace")
+
+local SPCHitbox = Require(WorkspacePath, "SCPHitbox")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -247,4 +249,14 @@ local ShopBuy = ShopTab:AddButton({
     Func = function()
         BuyItem.Buy(SelectedItem)
     end,
+})
+
+local WorkspaceGroupbox = MainTab:AddLeftGroupbox("Workspace")
+local WorkspaceRemoveSCPHitbox = WorkspaceGroupbox:AddToggle("Remove SCP Hitbox", {
+    Text = "Remove SCP Hitbox",
+    Default = false,
+    Tooltip = "NO MORE GAMES",
+    Callback = function(Value)
+        SCPHitbox.Toggle(Value)
+    end
 })
