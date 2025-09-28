@@ -19,6 +19,7 @@ local Esp = Require(FunPath, "Esp")
 
 local Fly = Require(PlayerPath, "Fly")
 local Noclip = Require(PlayerPath, "Noclip")
+local TeleportToPlayer = Require(PlayerPath, "TeleportToPlayer")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -133,9 +134,20 @@ local PlayerFlySlider = PlayerGroupbox:AddSlider("Fly Slider", {
     end
 })
 
-local PlayerListDropdown = PlayerGroupbox:AddDropdown("Player Dropdown", {
+local SelectedPlayer = nil
+local PlayerList = PlayerGroupbox:AddDropdown("Player Dropdown", {
     SpecialType = "Player",
     Text = "Select a Player",
     Multi = false,
     ExcludeLocalPlayer = true
+    Callback = function(Value)
+        SelectedPlayer = Value
+    end
+})
+
+local PlayerTeleport = PlayerGroupbox:AddButton({
+    Text = "Teleport To Player",
+    Func = function()
+        TeleportToPlayer.Teleport(SelectedPlayer)
+    end,
 })
