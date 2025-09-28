@@ -48,10 +48,10 @@ function AutoAim.AimCameraAtTarget()
     
     local targetPlayer = AutoAim.FindTargetInFOV(localPlayer)
     if targetPlayer and targetPlayer.Character then
-        local head = targetPlayer.Character:FindFirstChild("Head")
-        if not head then return end
+        local torso = targetPlayer.Character:FindFirstChild("Torso")
+        if not torso then return end
         
-        local screenPoint, onScreen = camera:WorldToViewportPoint(head.Position)
+        local screenPoint, onScreen = camera:WorldToViewportPoint(torso.Position)
         mousemoveabs(screenPoint.X, screenPoint.Y)
     end
 end
