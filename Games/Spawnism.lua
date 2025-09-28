@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
 local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Spawnism"
 
-local FunPath, PlayerPath = ModulesPath .. "/Fun/", ModulesPath .. "/Player/"
+local FunPath, PlayerPath, UselessPath = ModulesPath .. "/Fun/", ModulesPath .. "/Player/", ModulesPath .. "/Useless/"
 
 local function Require(Path, Name)
     local f = loadstring(game:HttpGet(Path .. Name .. ".lua"))
@@ -20,6 +20,8 @@ local Esp = Require(FunPath, "Esp")
 local Fly = Require(PlayerPath, "Fly")
 local Noclip = Require(PlayerPath, "Noclip")
 local TeleportToPlayer = Require(PlayerPath, "TeleportToPlayer")
+
+local TeleportToPlace = Require(UselessPath, "TeleportToPlace")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -151,3 +153,27 @@ local PlayerTeleport = PlayerGroupbox:AddButton({
         TeleportToPlayer.Teleport(SelectedPlayer)
     end,
 })
+
+local UselessTabbox = MainTab:AddLeftTabbox("Useless")
+local PlacesTab = UselessTabbox:AddTab("Places")
+local PlacesExplation = PlacesTab:AddLabel("Only teleports to specific places")
+
+local SelectedPlace = "Church"
+local PlacesList = PlacesTab:AddDropdown("Places List", {
+    Values = {"Church", "Spawndonalds", "Spawn Games", "Parking", "Dreamy House", "SCP-173 [Containment]", "SCP-173 [Outside]", "Abyss", "Spawn"},
+    Default = 1,
+    Multi = false, 
+    Text = "Places list",
+    Callback = function(Value)
+        SelectedPlace = Value
+    end
+})
+
+local PlacesTeleport = PlacesTab:AddButton({
+    Text = "Teleport To Place",
+    Func = function()
+        TeleportToPlace.Teleport(SelectedPlace)
+    end,
+})
+
+local ShopTab = UselessTabbox:AddTab("Shop")
