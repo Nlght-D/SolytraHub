@@ -281,6 +281,6 @@ local WorkspaceAntiSCP = WorkspaceGroupbox:AddToggle("Anti SCP", {
     Default = false,
     Tooltip = "NO MORE GAMES",
     Callback = function(Value)
-        SCPHitbox.Toggle(Value)
+        AntiSCP.Toggle(Value)
     end
 })
