@@ -263,12 +263,13 @@ local WorkspaceAntiSCP = WorkspaceGroupbox:AddToggle("Anti SCP", {
     end
 })
 
-local GravityValue = 196.1
+local GravityValue, ActivatedCustomGravity = 196.1, false
 local WorkspaceCustomGravity = WorkspaceGroupbox:AddToggle("Custom Gravity", {
     Text = "Custom Gravity",
     Default = false,
     Tooltip = "Houston, we have a problem",
     Callback = function(Value)
+        ActivatedCustomGravity = Value
         CustomGravity.Toggle(Value, GravityValue)
     end
 })
@@ -281,6 +282,7 @@ local WorkspaceCustomGravitySlider = WorkspaceGroupbox:AddSlider("Custom Gravity
     Compact = false,
     Callback = function(Value)
         GravityValue = Value
+        CustomGravity.Toggle(ActivatedCustomGravity, GravityValue)
     end
 })
 
