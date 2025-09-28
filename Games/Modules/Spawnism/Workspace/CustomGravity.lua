@@ -1,21 +1,24 @@
 local module = {}
 module.Enabled = false
-local GravityValue = Instance.new("NumberValue"); GravityValue.Changed:Connect(function(value)
+
+local GravityValue = Instance.new("NumberValue")
+local DefaultGravity = 196.1
+
+GravityValue.Changed:Connect(function()
 	if not module.Enabled then
 		return
 	end
-	workspace.Gravity = value
+	workspace.Gravity = GravityValue.Value
 end)
-local DefaultGravity = 196.1
 
 function module.Toggle(Value, Number)
 	module.Enabled = Value
 	if not Value then
-        GravityValue.Value = DefaultGravity
+		GravityValue.Value = DefaultGravity
 		workspace.Gravity = DefaultGravity
 		return
 	end
-	
+
 	GravityValue.Value = Number
 end
 
