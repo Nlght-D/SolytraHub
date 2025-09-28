@@ -1,5 +1,4 @@
 local Fly = {}
-
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -30,6 +29,9 @@ UserInputService.InputEnded:Connect(function(input)
 end)
 
 function Fly.Enable()
+    if Fly.Enabled then return end
+    Fly.Enabled = true
+
     local player = Players.LocalPlayer
     local char = player.Character or player.CharacterAdded:Wait()
     local torso = char:WaitForChild("Torso")
@@ -57,6 +59,7 @@ function Fly.Enable()
         moveDir = moveDir + (cam.CFrame.LookVector * (ctrl.f - ctrl.b))
         moveDir = moveDir + (cam.CFrame.RightVector * (ctrl.r - ctrl.l))
 
+        -- Velocidade
         if moveDir.Magnitude > 0 then
             moveDir = moveDir.Unit * speed
         end
@@ -72,7 +75,9 @@ function Fly.Enable()
         bodyGyro.CFrame = CFrame.new(torso.Position, torso.Position + cam.CFrame.LookVector)
     end)
 end
+
 function Fly.Disable()
+    Fly.Enabled = false
     if bodyGyro then bodyGyro:Destroy() bodyGyro = nil end
     if bodyVelocity then bodyVelocity:Destroy() bodyVelocity = nil end
     if flyConnection then flyConnection:Disconnect() flyConnection = nil end
@@ -88,10 +93,10 @@ function Fly.Disable()
 end
 
 function Fly.Toggle(Value)
-    if not Value then
-        Fly.Disable()
-    else
+    if Value then
         Fly.Enable()
+    else
+        Fly.Disable()
     end
 end
 

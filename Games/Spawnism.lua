@@ -94,7 +94,7 @@ local PlayerFly = FunGroupbox:AddToggle("Fly", {
     Tooltip = "TCO VS TDL",
     Default = false,
 })
-local PlayerFlyKeybind = FunLazer:AddKeyPicker("Fly Keybind", {
+local PlayerFlyKeybind = PlayerGroupbox:AddKeyPicker("Fly Keybind", {
     Default = "F",
     Text = "Fly Keybind",
     Mode = "Toggle",
@@ -104,7 +104,7 @@ local PlayerFlyKeybind = FunLazer:AddKeyPicker("Fly Keybind", {
         Fly.Toggle(Value)
     end
 })
-local PlayerFlySlider = FunGroupbox:AddSlider("Fly Slider", {
+local PlayerFlySlider = PlayerGroupbox:AddSlider("Fly Slider", {
     Text = "Fly Velocity",
     Default = 50,
     Min = 0,
