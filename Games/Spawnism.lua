@@ -25,7 +25,8 @@ local Orbit = Require(PlayerPath, "Orbit")
 local BuyItem = Require(UselessPath, "BuyItem")
 local TeleportToPlace = Require(UselessPath, "TeleportToPlace")
 
-local SPCHitbox = Require(WorkspacePath, "SCPHitbox")
+local AntiSCP = Require(WorkspacePath, "AntiSCP")
+local CustomGravity = Require(WorkspacePath, "CustomGravity")
 
 local Window = Library:CreateWindow({
     Title = "Spawnism Hangout",
@@ -167,7 +168,7 @@ local PlayerOrbitSliderSpeed = PlayerGroupbox:AddSlider("Orbit Speed Slider", {
     Text = "Orbit Velocity",
     Default = 2,
     Min = 1,
-    Max = 10,
+    Max = 20,
     Rounding = 1,
     Compact = false,
     Callback = function(Value)
@@ -252,8 +253,31 @@ local ShopBuy = ShopTab:AddButton({
 })
 
 local WorkspaceGroupbox = MainTab:AddLeftGroupbox("Workspace")
-local WorkspaceRemoveSCPHitbox = WorkspaceGroupbox:AddToggle("Remove SCP Hitbox", {
-    Text = "Remove SCP Hitbox",
+
+local GravityValue = 196.1
+local WorkspaceCustomGravity = WorkspaceGroupbox:AddToggle("Custom Gravity", {
+    Text = "Custom Gravity",
+    Default = false,
+    Tooltip = "Houston, we have a problem",
+    Callback = function(Value)
+        CustomGravity.Toggle(Value, GravityValue)
+    end
+})
+local WorkspaceCustomGravitySlider = WorkspaceGroupbox:AddSlider("Custom Gravity Slider", {
+    Text = "Gravity Number",
+    Default = 196,
+    Min = 0,
+    Max = 400,
+    Rounding = 1,
+    Compact = false,
+    Callback = function(Value)
+        GravityValue = Value
+    end
+})
+
+
+local WorkspaceAntiSCP = WorkspaceGroupbox:AddToggle("Anti SCP", {
+    Text = "Anti SCP",
     Default = false,
     Tooltip = "NO MORE GAMES",
     Callback = function(Value)
