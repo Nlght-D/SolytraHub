@@ -41,8 +41,8 @@ end
 
 Players.PlayerAdded:Connect(setupPlayer)
 
-function module.Toggle(Boolean)
-    module.Enabled = Boolean
+function module.Toggle()
+    module.Enabled = not module.Enabled
 
     for _, Player in ipairs(Players:GetPlayers()) do
         if Player ~= Players.LocalPlayer and Player.Character then
