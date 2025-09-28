@@ -10,8 +10,16 @@ module.Places = {
     ["Abyss"] = Vector3.new(511, -396, -355),
     ["Spawn"] = Vector3.new(28, 16, 214)
 }
+module.SavedPosition = nil
 
 local player = game.Players.LocalPlayer
+
+function module.SavePosition()
+    local character = player.Character
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        SavedPosition = character.HumanoidRootPart.Position
+    end
+end
 
 function module.Teleport(Place)
     local position = module.Places[Place]
@@ -20,6 +28,13 @@ function module.Teleport(Place)
     local character = player.Character
     if character and character:FindFirstChild("HumanoidRootPart") then
         character:MoveTo(position)
+    end
+end
+
+function module.BackToSavedPosition()
+    local Character = player.Character
+    if Character and Character:FindFirstChild("HumanoidRootPart") and module.SavedPosition then
+        Character:MoveTo(module.SavedPosition)
     end
 end
 

@@ -158,6 +158,20 @@ local UselessTabbox = MainTab:AddLeftTabbox("Useless")
 local PlacesTab = UselessTabbox:AddTab("Places")
 local PlacesExplation = PlacesTab:AddLabel("Only teleports to specific places")
 
+local PlacesSavePosition = PlacesTab:AddButton({
+    Text = "Save Position",
+    Func = function()
+        TeleportToPlace.SavePosition()
+    end,
+})
+PlacesSavePosition:AddButton({
+    Text = "Back To Saved Position",
+    Func = function()
+        TeleportToPlace.BackToSavedPosition()
+    end
+})
+
+
 local SelectedPlace = "Church"
 local PlacesList = PlacesTab:AddDropdown("Places List", {
     Values = {"Church", "Spawndonalds", "Spawn Games", "Parking", "Dreamy House", "SCP-173 [Containment]", "SCP-173 [Outside]", "Abyss", "Spawn"},
@@ -175,5 +189,6 @@ local PlacesTeleport = PlacesTab:AddButton({
         TeleportToPlace.Teleport(SelectedPlace)
     end,
 })
+
 
 local ShopTab = UselessTabbox:AddTab("Shop")
