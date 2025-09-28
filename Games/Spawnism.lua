@@ -82,6 +82,6 @@ local FunInfiniteStamina = FunGroupbox:AddButton({
 local FunEsp = FunGroupbox:AddButton({
     Text = "ESP Function",
     Func = function()
-        Esp.Run()
+        Esp.Toggle()
     end,
 })
