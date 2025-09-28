@@ -8,6 +8,7 @@ local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
 local LocalPlayer = Players.LocalPlayer
+local angle = 0 
 
 function module.Toggle(Value, targetPlayer)
     if Value then
@@ -22,19 +23,21 @@ function module.Toggle(Value, targetPlayer)
     end
 end
 
-RunService.RenderStepped:Connect(function(time)
+RunService.RenderStepped:Connect(function(dt)
     if module.Enabled and module.Target and module.Target.Character then
         local targetHRP = module.Target.Character:FindFirstChild("HumanoidRootPart")
         local myChar = LocalPlayer.Character
         local myHRP = myChar and myChar:FindFirstChild("HumanoidRootPart")
 
         if targetHRP and myHRP then
-            local angle = time * module.Speed
+            angle = angle + dt * module.Speed 
+
             local offset = Vector3.new(
                 math.cos(angle) * module.Radius,
                 0,
                 math.sin(angle) * module.Radius
             )
+
             myHRP.CFrame = CFrame.new(targetHRP.Position + offset, targetHRP.Position)
         end
     end

@@ -154,7 +154,7 @@ local PlayerTeleport = PlayerGroupbox:AddButton({
         TeleportToPlayer.Teleport(SelectedPlayer)
     end,
 })
-local PlayerOrbit = Groupbox:AddToggle("Player Orbit", {
+local PlayerOrbit = PlayerGroupbox:AddToggle("Player Orbit", {
     Text = "Orbit Player",
     Default = false,
     Callback = function(Value)
