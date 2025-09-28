@@ -11,7 +11,7 @@ local function Require(Path, Name)
     end
 end
 
-local BypassHomelander = Require(FunPath, "BypassHomelander")
+local BypassHomelander = Require(FunPath, "BypassHomelander") -- THE CHOSEN ONE
 local InfiniteStamina = Require(FunPath, "InfiniteStamina")
 
 local Aimbot = Require(FunPath, "Aimbot")
@@ -20,6 +20,7 @@ local Esp = Require(FunPath, "Esp")
 local Fly = Require(PlayerPath, "Fly")
 local Noclip = Require(PlayerPath, "Noclip")
 local TeleportToPlayer = Require(PlayerPath, "TeleportToPlayer")
+local Orbit = Require(PlayerPath, "Orbit")
 
 local BuyItem = Require(UselessPath, "BuyItem")
 local TeleportToPlace = Require(UselessPath, "TeleportToPlace")
@@ -153,6 +154,14 @@ local PlayerTeleport = PlayerGroupbox:AddButton({
         TeleportToPlayer.Teleport(SelectedPlayer)
     end,
 })
+local PlayerOrbit = Groupbox:AddToggle("Player Orbit", {
+    Text = "Orbit Player",
+    Default = false,
+    Callback = function(Value)
+        Orbit.Toggle(Value, SelectedPlayer)
+    end
+})
+
 
 local UselessTabbox = MainTab:AddLeftTabbox("Useless")
 local PlacesTab = UselessTabbox:AddTab("Places")
@@ -210,7 +219,7 @@ local ShopList = ShopTab:AddDropdown("Shop List", {
     Callback = function(Value)
         SelectedItem = Value
     end
-}
+})
 local ShopBuy = ShopTab:AddButton({
     Text = "Buy Item",
     Func = function()
