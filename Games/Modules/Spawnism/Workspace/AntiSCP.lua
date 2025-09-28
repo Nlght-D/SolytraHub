@@ -1,5 +1,5 @@
 local module = {}
-module.Enabled = true
+module.Enabled = false
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
