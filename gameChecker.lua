@@ -1,11 +1,8 @@
 local Places = {
-    [102719677723924] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/KSPR.lua",
-    [125009265613167] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/InkGame.lua",
-    [135857312687770] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/Spawnism.lua"
+    [9391468976] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/KSPR.lua",
 }
 
 local pid = game.PlaceId
-warn("PlaceId atual:", pid)
 
 local url = Places[pid]
 if url then
