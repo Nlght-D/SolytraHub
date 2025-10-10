@@ -90,21 +90,25 @@ end
 
 function FlyModule:Toggle(state)
     if state then
-        if flyActive then return end
+        if flyActive then 
+            flyActive = false
+            self:_StopFly()
+            return 
+        end
         flyActive = true
         self:_FlyLoop()
 
-        -- registra input X para alternar fly
         if not self._XConn then
             self._XConn = UserInputService.InputBegan:Connect(function(input, processed)
                 if processed then return end
                 if input.KeyCode == Enum.KeyCode.X then
-                    self:Toggle() -- alterna fly
+                    self:Toggle(state) 
                 end
             end)
         end
     else
-        if not flyActive then return end
+        if not flyActive then 
+            return end
         flyActive = false
         self:_StopFly()
 
