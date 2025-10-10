@@ -22,7 +22,7 @@ local Tabs = {
     Fun = Window:AddTab({ Title = "Fun", Icon = "party-popper" }),
     Search = Window:AddTab({ Title = "Search", Icon = "search" })
 }
-
+local Options = Fluent.Options
 
 local function AddScriptToggle(tab, id, title, description, scriptURL, defaultState)
 	local toggle = tab:AddToggle(id, {
@@ -31,12 +31,11 @@ local function AddScriptToggle(tab, id, title, description, scriptURL, defaultSt
     	Default = defaultState or false
 	})
 
-
     Options[id].Args = { scriptURL = scriptURL }
-
-    local module = loadstring(game:HttpGet(scriptURL))
+    local module = loadstring(game:HttpGet(scriptURL))()
     toggle:OnChanged(function()
-        module.Toggle(Options[id].Value)
+        print(Options[id].Value)
+        module:Toggle(Options[id].Value)
     end)
 end
 

@@ -52,6 +52,7 @@ function FlyModule:_FlyLoop()
         end
     end)
 
+    -- Inputs de movimento enquanto fly está ativo
     self.InputConn = UserInputService.InputBegan:Connect(function(input, processed)
         if processed then return end
         if input.KeyCode == Enum.KeyCode.W then ctrl.f = 1 end
@@ -71,6 +72,7 @@ function FlyModule:_FlyLoop()
     self._bv = bv
 end
 
+-- Para o fly
 function FlyModule:_StopFly()
     tpwalking = false
     local character = LocalPlayer.Character
@@ -86,13 +88,14 @@ function FlyModule:_StopFly()
     if self.InputEndConn then self.InputEndConn:Disconnect() self.InputEndConn = nil end
 end
 
-function FlyModule:Toggle(Boolean)
-    if Boolean then
-        self:_FlyLoop()
-        flyActive = true
-    else
+-- Toggle principal: ativa/desativa o fly e o input
+function FlyModule:Toggle()
+    if flyActive then
         self:_StopFly()
         flyActive = false
+    else
+        self:_FlyLoop()
+        flyActive = true
     end
 end
 
