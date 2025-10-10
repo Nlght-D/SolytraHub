@@ -9,8 +9,8 @@ local tpwalking = false
 local flyActive = false
 
 FlyModule.Speed = 50
+FlyModule._XConn = nil
 
--- Loop de voo
 function FlyModule:_FlyLoop()
     local character = LocalPlayer.Character
     if not character then return end
@@ -52,13 +52,14 @@ function FlyModule:_FlyLoop()
         end
     end)
 
-    -- Inputs de movimento enquanto fly está ativo
     self.InputConn = UserInputService.InputBegan:Connect(function(input, processed)
         if processed then return end
         if input.KeyCode == Enum.KeyCode.W then ctrl.f = 1 end
         if input.KeyCode == Enum.KeyCode.S then ctrl.b = -1 end
         if input.KeyCode == Enum.KeyCode.A then ctrl.l = -1 end
         if input.KeyCode == Enum.KeyCode.D then ctrl.r = 1 end
+        if input.KeyCode == Enum.KeyCode.Space then rootPart.CFrame = rootPart.CFrame + Vector3.new(0,1,0) end
+        if input.KeyCode == Enum.KeyCode.LeftShift then rootPart.CFrame = rootPart.CFrame + Vector3.new(0,-1,0) end
     end)
 
     self.InputEndConn = UserInputService.InputEnded:Connect(function(input)
@@ -72,7 +73,6 @@ function FlyModule:_FlyLoop()
     self._bv = bv
 end
 
--- Para o fly
 function FlyModule:_StopFly()
     tpwalking = false
     local character = LocalPlayer.Character
@@ -88,14 +88,31 @@ function FlyModule:_StopFly()
     if self.InputEndConn then self.InputEndConn:Disconnect() self.InputEndConn = nil end
 end
 
--- Toggle principal: ativa/desativa o fly e o input
-function FlyModule:Toggle()
-    if flyActive then
-        self:_StopFly()
-        flyActive = false
-    else
-        self:_FlyLoop()
+function FlyModule:Toggle(state)
+    if state then
+        if flyActive then return end
         flyActive = true
+        self:_FlyLoop()
+
+        -- registra input X para alternar fly
+        if not self._XConn then
+            self._XConn = UserInputService.InputBegan:Connect(function(input, processed)
+                if processed then return end
+                if input.KeyCode == Enum.KeyCode.X then
+                    self:Toggle() -- alterna fly
+                end
+            end)
+        end
+    else
+        if not flyActive then return end
+        flyActive = false
+        self:_StopFly()
+
+        -- desconecta input X
+        if self._XConn then
+            self._XConn:Disconnect()
+            self._XConn = nil
+        end
     end
 end
 
