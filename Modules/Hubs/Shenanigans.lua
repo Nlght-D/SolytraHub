@@ -34,18 +34,14 @@ local function AddScriptToggle(tab, id, title, description, scriptURL, defaultSt
 
     Options[id].Args = { scriptURL = scriptURL }
 
+    local module = loadstring(game:HttpGet(scriptURL))
     toggle:OnChanged(function()
-        if Options[id].Value then
-            loadstring(game:HttpGet(scriptURL))()
-        else
-            print(title .. " disabled")
-        end
+        module.Toggle(Options[id].Value)
     end)
 end
 
 local ScriptsPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Modules/Scripts/Shenanigans/"
 local MovementPath = ScriptsPath .. "Movement/"
-
 
 AddScriptToggle(Fluent.Main, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua")
 
