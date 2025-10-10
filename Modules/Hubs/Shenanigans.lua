@@ -43,7 +43,7 @@ end
 local ScriptsPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Modules/Scripts/Shenanigans/"
 local MovementPath = ScriptsPath .. "Movement/"
 
-AddScriptToggle(Fluent.Main, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua")
+AddScriptToggle(Tabs.Movement, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua")
 
 print("Auto-Delete AC Started")
 game.Workspace.DescendantAdded:Connect(function(descendant)
