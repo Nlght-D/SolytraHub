@@ -1,0 +1,57 @@
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+local LocalPlayer = Players.LocalPlayer
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Soltra",
+    SubTitle = "Shenigans",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Theme = "Amethyst",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "layout" }),
+    Movement = Window:AddTab({ Title = "Movement", Icon = "rocket" }),
+    Combat = Window:AddTab({ Title = "Combat", Icon = "sword" }),
+    Utility = Window:AddTab({ Title = "Utility", Icon = "settings" }),
+    Animations = Window:AddTab({ Title = "Animations", Icon = "film" }),
+    Achievements = Window:AddTab({ Title = "Achievements", Icon = "crown" }),
+    Fun = Window:AddTab({ Title = "Fun", Icon = "party-popper" }),
+    Search = Window:AddTab({ Title = "Search", Icon = "search" })
+}
+
+
+local function AddScriptToggle(tab, id, title, description, scriptURL, defaultState)
+	local toggle = tab:AddToggle(id, {
+    	Title = title,
+    	Description = description,
+    	Default = defaultState or false
+	})
+
+
+    Options[id].Args = { scriptURL = scriptURL }
+
+    toggle:OnChanged(function()
+        if Options[id].Value then
+            loadstring(game:HttpGet(scriptURL))()
+        else
+            print(title .. " disabled")
+        end
+    end)
+end
+
+local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Spawnism"
+
+
+AddScriptToggle(Fluent.Main, "Fly", "Fly", "X to Fly!", "", false)
+
+print("Auto-Delete AC Started")
+game.Workspace.DescendantAdded:Connect(function(descendant)
+    if descendant.Name == "AntiCheatController" then
+        descendant:Destroy()
+        print("AC deleted")
+    end
+end)

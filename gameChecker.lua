@@ -1,7 +1,6 @@
 local Places = {
-    [9391468976] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/main/Games/KSPR.lua",
+    [9391468976] = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Modules/Hubs/Shenanigans.lua",
 }
-
 local pid = game.PlaceId
 
 local url = Places[pid]
