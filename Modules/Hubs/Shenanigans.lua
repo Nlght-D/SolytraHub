@@ -43,10 +43,11 @@ local function AddScriptToggle(tab, id, title, description, scriptURL, defaultSt
     end)
 end
 
-local ModulesPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Games/Modules/Spawnism"
+local ScriptsPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Modules/Scripts/Shenanigans/"
+local MovementPath = ScriptsPath .. "Movement/"
 
 
-AddScriptToggle(Fluent.Main, "Fly", "Fly", "X to Fly!", "", false)
+AddScriptToggle(Fluent.Main, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua")
 
 print("Auto-Delete AC Started")
 game.Workspace.DescendantAdded:Connect(function(descendant)
