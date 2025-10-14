@@ -89,6 +89,7 @@ function FlyModule:_StopFly()
 end
 
 function FlyModule:Toggle(state)
+    FlyModule.Speed = _G.FlySpeed or 50
     if state then
         if flyActive then 
             flyActive = false

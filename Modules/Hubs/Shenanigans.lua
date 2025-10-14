@@ -24,20 +24,19 @@ local Tabs = {
 }
 local Options = Fluent.Options
 
-local function AddScriptSlider(tab, id, title, description, scriptURL, valueName, minValue, maxValue, defaultState)
-	local toggle = tab:AddSlider(id, {
+local function AddScriptSlider(tab, id, title, description, valueName, minValue, maxValue, defaultState)
+	local slider = tab:AddSlider(id, {
     	Title = title,
     	Description = description,
         Min = minValue or 0,
         Max = maxValue or 100,
+        Rounding = 1,
     	Default = defaultState or 50
 	})
 
-    Options[id].Args = { scriptURL = scriptURL }
     local module = loadstring(game:HttpGet(scriptURL))()
     toggle:OnChanged(function()
-        module[valueName] = Options[id].Value
-        --module:Toggle(Options[id].Value)
+        _G[valueName] = Options[id].Value
     end)
 end
 
@@ -51,7 +50,6 @@ local function AddScriptToggle(tab, id, title, description, scriptURL, defaultSt
     Options[id].Args = { scriptURL = scriptURL }
     local module = loadstring(game:HttpGet(scriptURL))()
     toggle:OnChanged(function()
-        print(Options[id].Value)
         module:Toggle(Options[id].Value)
     end)
 end
@@ -60,7 +58,7 @@ local ScriptsPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/h
 local MovementPath = ScriptsPath .. "Movement/"
 
 AddScriptToggle(Tabs.Movement, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua")
-AddScriptSlider(Tabs.Movement, "Fly Speed", "Speed of Fly", "Speed", MovementPath .. "Fly.lua")
+AddScriptSlider(Tabs.Movement, "Fly Speed", "Speed of Fly", "FlySpeed")
 
 print("Auto-Delete AC Started")
 game.Workspace.DescendantAdded:Connect(function(descendant)
