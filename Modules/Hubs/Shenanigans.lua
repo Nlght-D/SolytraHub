@@ -36,7 +36,7 @@ local function AddScriptSlider(tab, id, title, description, valueName, minValue,
 
     local module = loadstring(game:HttpGet(scriptURL))()
     toggle:OnChanged(function()
-        _G[valueName] = Options[id].Value
+        --_G[valueName] = Options[id].Value
     end)
 end
 
@@ -58,7 +58,7 @@ local ScriptsPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/h
 local MovementPath = ScriptsPath .. "Movement/"
 
 AddScriptToggle(Tabs.Movement, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua")
-AddScriptSlider(Tabs.Movement, "Fly Speed", "Speed of Fly", "FlySpeed")
+AddScriptSlider(Tabs.Movement, "Fly Speed", "Fly Speed", "Speed of Fly", "FlySpeed")
 
 print("Auto-Delete AC Started")
 game.Workspace.DescendantAdded:Connect(function(descendant)

@@ -90,6 +90,9 @@ end
 
 function FlyModule:Toggle(state)
     FlyModule.Speed = _G.FlySpeed or 50
+    for _, V in _G do
+        print(V)
+    end
     if state then
         if flyActive then 
             flyActive = false
