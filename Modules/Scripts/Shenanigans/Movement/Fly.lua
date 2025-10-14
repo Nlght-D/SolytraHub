@@ -8,7 +8,7 @@ local LocalPlayer = Players.LocalPlayer
 local tpwalking = false
 local flyActive = false
 
-FlyModule.Speed = 50
+FlyModule.Speed = _G.FlySpeed or 50
 FlyModule._XConn = nil
 
 function FlyModule:_FlyLoop()
