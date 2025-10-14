@@ -36,11 +36,11 @@ local function AddScriptSlider(tab, id, title, description, valueName, minValue,
 
     local module = loadstring(game:HttpGet(scriptURL))()
     toggle:OnChanged(function()
-        --_G[valueName] = Options[id].Value
+        _G[valueName] = Options[id].Value
     end)
 end
 
-local function AddScriptToggle(tab, id, title, description, scriptURL, defaultState)
+local function AddScriptToggle(tab, id, title, description, scriptURL, defaultState, arguments)
 	local toggle = tab:AddToggle(id, {
     	Title = title,
     	Description = description,
@@ -50,14 +50,14 @@ local function AddScriptToggle(tab, id, title, description, scriptURL, defaultSt
     Options[id].Args = { scriptURL = scriptURL }
     local module = loadstring(game:HttpGet(scriptURL))()
     toggle:OnChanged(function()
-        module:Toggle(Options[id].Value)
+        module:Toggle(Options[id].Value, unpack(arguments))
     end)
 end
 
 local ScriptsPath = "https://raw.githubusercontent.com/Nlght-D/SolytraHub/refs/heads/main/Modules/Scripts/Shenanigans/"
 local MovementPath = ScriptsPath .. "Movement/"
 
-AddScriptToggle(Tabs.Movement, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua")
+AddScriptToggle(Tabs.Movement, "Fly", "Fly", "X to Fly!", MovementPath .. "Fly.lua", {(_G.FlySpeed or 50)})
 AddScriptSlider(Tabs.Movement, "Fly Speed", "Fly Speed", "Speed of Fly", "FlySpeed")
 
 print("Auto-Delete AC Started")

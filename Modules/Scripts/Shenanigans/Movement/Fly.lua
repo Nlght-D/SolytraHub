@@ -8,7 +8,7 @@ local LocalPlayer = Players.LocalPlayer
 local tpwalking = false
 local flyActive = false
 
-FlyModule.Speed = _G.FlySpeed or 50
+FlyModule.Speed = 50
 FlyModule._XConn = nil
 
 function FlyModule:_FlyLoop()
@@ -88,12 +88,9 @@ function FlyModule:_StopFly()
     if self.InputEndConn then self.InputEndConn:Disconnect() self.InputEndConn = nil end
 end
 
-function FlyModule:Toggle(state)
-    FlyModule.Speed = _G.FlySpeed or 50
-    for _, V in _G do
-        print(V)
-    end
+function FlyModule:Toggle(state, FlySpeed)
     if state then
+        FlyModule.Speed = FlySpeed
         if flyActive then 
             flyActive = false
             self:_StopFly()
